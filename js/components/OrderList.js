@@ -1,5 +1,5 @@
 import React from 'react';
-
+import OrderActions from '../actions/OrderActions';
 import OrderItem from './OrderItem';
 
 export default class OrderList extends React.Component {
@@ -13,9 +13,13 @@ export default class OrderList extends React.Component {
         }
 
         return (
-            <div className="orderList">
+            <div className="orderList" onClick={this._createOrder}>
                 {orderItems}
             </div>
         );
+    }
+
+    _createOrder(){
+        OrderActions.createOrder();
     }
 }
