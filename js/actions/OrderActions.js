@@ -1,11 +1,13 @@
-import Dispatcher from 'flux';
+import AppDispatcher from '../dispatchers/AppDispatcher';
 import OrderConstants from '../constants/OrderConstants';
 
-export let OrderActions = {
+let OrderActions = {
     createOrder(order){
         console.log("Action: create");
-        Dispatcher.dispatch({
+        AppDispatcher.dispatch({
             actionType: OrderConstants.CREATE_ORDER
         });
     }
 }
+
+export default OrderActions;

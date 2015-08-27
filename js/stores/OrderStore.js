@@ -1,24 +1,25 @@
-import Dispatcher from 'flux';
-import EventEmitter from 'events';
+import AppDispatcher from '../dispatchers/AppDispatcher';
+import {EventEmitter} from 'events';
 import OrderConstants from '../constants/OrderConstants';
+import assign from 'object-assign';
 
 const CHANGE_EVENT="change";
 
 let OrderStore = assign({}, EventEmitter.prototype, {
-    emitChange: function() {
+    emitChange() {
         this.emit(CHANGE_EVENT);
     },
 
-    addChangeListener: function(callback) {
+    addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
     },
 
-    removeChangeListener: function(callback) {
+    removeChangeListener(callback) {
         this.removeListener(CHANGE_EVENT, callback);
     }
 });
 
-Dispatcher.register(function(action) {
+AppDispatcher.register(function(action) {
 
     switch(action.actionType) {
         case OrderConstants.CREATE_ORDER:
@@ -31,4 +32,4 @@ Dispatcher.register(function(action) {
     }
 });
 
-export {OrderStore};
+export default OrderStore;
