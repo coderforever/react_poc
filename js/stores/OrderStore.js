@@ -24,6 +24,7 @@ AppDispatcher.register(function(action) {
     switch(action.actionType) {
         case OrderConstants.CREATE_ORDER:
             console.log("Store: "+OrderConstants.CREATE_ORDER);
+            // TODO: insert data
             OrderStore.emitChange();
             break;
 

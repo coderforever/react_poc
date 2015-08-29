@@ -5,7 +5,8 @@ let OrderActions = {
     createOrder(order){
         console.log("Action: create");
         AppDispatcher.dispatch({
-            actionType: OrderConstants.CREATE_ORDER
+            actionType: OrderConstants.CREATE_ORDER,
+            actionData: order
         });
     }
 }
