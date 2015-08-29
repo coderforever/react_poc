@@ -1,0 +1,37 @@
+body{
+    background:#dcdcdc;
+    font: 13px Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+    color:#565656;
+}
+
+.orderDetail{
+    width:600px;
+    margin-top:75px;
+    margin-left:auto;
+    margin-right:auto;
+    background:white;
+    padding:10px 20px 10px 20px;
+    border-radius:10px;
+}
+
+.orderTitle{
+    font-size:1.5em;
+    font-weight:bold;
+    border-bottom:2px solid #dcdcdc;
+    padding-bottom:10px;
+    text-align:center;
+}
+
+.orderDesc{
+    min-height:300px;
+    margin-top:10px;
+}
+
+.errorMsg{
+    font-size:1.5em;
+    font-weight:bold;
+    color:red;
+    padding:20px;
+    text-align:center;
+}
+
