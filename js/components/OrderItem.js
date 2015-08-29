@@ -6,18 +6,23 @@ export default class OrderList extends React.Component {
         let id=this.props.oid, name=this.props.name, description=this.props.description;
 
         return (
-            <div className="orderItem">
-                <div className="orderItem_name">{name}</div>
-                <div className="orderItem_description">{description}</div>
-                <div className="orderItem_operations">
-                    <div className="orderItem_red_btn" onClick={()=>this._deleteItem(id)}>删除</div>
-                    <div className="orderItem_btn">查看详情</div>
+            <div className='orderItem'>
+                <div className='orderItem_name'>{name}</div>
+                <div className='orderItem_description'>{description}</div>
+                <div className='orderItem_operations'>
+                    <div className='orderItem_red_btn' onClick={()=>this._deleteItem(id)}>删除</div>
+                    <div className='orderItem_btn' onClick={()=>this._detailItem(id, name, description)}>查看详情</div>
                 </div>
             </div>
         );
     }
 
     _deleteItem(item_id){
-        console.log(item_id);
+        console.log('Delete item: '+item_id);
+        OrderActions.deleteOrder(item_id);
+    }
+
+    _detailItem(id, name, description){
+
     }
 }

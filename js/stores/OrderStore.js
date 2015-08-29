@@ -3,9 +3,18 @@ import {EventEmitter} from 'events';
 import OrderConstants from '../constants/OrderConstants';
 import assign from 'object-assign';
 
-const CHANGE_EVENT="change";
+const CHANGE_EVENT='change';
 
 let OrderStore = assign({}, EventEmitter.prototype, {
+    listPage(page, size){
+        //TODO: list a page of items
+        return {
+            page: page,
+            count: 10,
+            data: [{id:1, name:'中文1', description:'asdfasdf'},{id:2, name:'订单名称', description:'asdfasdf'},{id:3, name:'test33', description:'asdfasdf'},{id:4, name:'test44', description:'asdfasdf'}]
+       };
+    },
+
     emitChange() {
         this.emit(CHANGE_EVENT);
     },
@@ -23,8 +32,14 @@ AppDispatcher.register(function(action) {
 
     switch(action.actionType) {
         case OrderConstants.CREATE_ORDER:
-            console.log("Store: "+OrderConstants.CREATE_ORDER);
+            console.log('Store: '+OrderConstants.CREATE_ORDER);
             // TODO: insert data
+            OrderStore.emitChange();
+            break;
+
+        case OrderConstants.DELETE_ORDER:
+            console.log('Store: '+OrderConstants.DELETE_ORDER);
+            // TODO: delete data
             OrderStore.emitChange();
             break;
 

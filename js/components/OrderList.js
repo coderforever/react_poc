@@ -1,23 +1,17 @@
 import React from 'react';
 import OrderItem from './OrderItem';
+import OrderPaginator from './OrderPaginator';
 import OrderStore from '../stores/OrderStore';
 import OrderConstants from '../constants/OrderConstants';
 
 export default class OrderList extends React.Component {
 
-    getInitialState(){
-        console.log("get default state");
-        return {
+    constructor(){
+        super();
+        this.state={
             page: OrderConstants.PAGE_NO,
             size: OrderConstants.PAGE_SIZE,
             editable: true
-        };
-    }
-
-    getDefaultProps(){
-       console.log("get default props");
-       return {
-            orderList_data: [{id:1, name:"中文1", description:"asdfasdf"},{id:2, name:"订单名称", description:"asdfasdf"},{id:3, name:"test33", description:"asdfasdf"},{id:4, name:"test44", description:"asdfasdf"}]
         };
     }
 
@@ -30,22 +24,27 @@ export default class OrderList extends React.Component {
     }
 
     render() {
-        let orderItems=[];
+        let orderItems=[], store=OrderStore.listPage(this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
 
-        console.log(this.props.orderList_data);
-
-        for(let order of [{id:1, name:"中文1", description:"asdfasdf"},{id:2, name:"订单名称", description:"asdfasdf"},{id:3, name:"test33", description:"asdfasdf"},{id:4, name:"test44", description:"asdfasdf"}]){
-            orderItems.push(<OrderItem oid={order.id} description={order.description} name={order.name} />);
+        for(let order of orderData){
+            orderItems.push(<OrderItem key={order.id} oid={order.id} description={order.description} name={order.name} />);
         }
 
         return (
-            <div className="orderList">
+            <div className='orderList'>
                 {orderItems}
+                <OrderPaginator page={page} count={count} onPageSelect={this._onPageSelect.bind(this)} />
             </div>
         );
     }
 
     _onChange(){
-        console.log("React: store changed");
+        console.log('React: store changed');
+    }
+
+    _onPageSelect(page){
+        this.setState({
+            page: page
+        });
     }
 }
