@@ -15,6 +15,10 @@ let OrderStore = assign({}, EventEmitter.prototype, {
        };
     },
 
+    getDetail(id){
+        return {id:1, name:'订单名称订单名称', description:'订单描述信息'};
+    },
+
     emitChange() {
         this.emit(CHANGE_EVENT);
     },

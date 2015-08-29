@@ -16,14 +16,16 @@ export default class OrderList extends React.Component {
     }
 
     componentDidMount() {
-        OrderStore.addChangeListener(this._onChange);
+        OrderStore.addChangeListener(()=>this._onChange());
     }
 
     componentWillUnmount() {
-        OrderStore.removeChangeListener(this._onChange);
+        OrderStore.removeChangeListener(()=>this._onChange());
     }
 
     render() {
+        console.log("render");
+
         let orderItems=[], store=OrderStore.listPage(this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
 
         for(let order of orderData){
@@ -40,6 +42,9 @@ export default class OrderList extends React.Component {
 
     _onChange(){
         console.log('React: store changed');
+        this.setState({
+            page: OrderConstants.PAGE_NO
+        });
     }
 
     _onPageSelect(page){
