@@ -10,6 +10,7 @@
     padding:20px;
     background:white;
     border-radius:10px;
+    height:310px;
 }
 
 label{
@@ -40,4 +41,22 @@ textarea{
 
 .create_row{
     margin-bottom:20px;
+}
+
+#create_submit{
+    line-height:20px;
+    padding:3px 6px 3px 6px;
+    float:right;
+    cursor:pointer;
+    margin-right:15px;
+    margin-top:7px;
+    color:white;
+    border-radius:5px;
+    text-decoration: none;
+    background:#4DB5F9;
+    border:none;
+}
+
+#create_submit:hover{
+    background:#84CBF9;
 }

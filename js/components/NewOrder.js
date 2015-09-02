@@ -26,7 +26,7 @@ export default class NewOrder extends React.Component {
                         <label htmlFor='orderDesc_input' className='submit_label'>描述信息: </label>
                         <textarea placeholder={'请输入描述信息（不超过'+OrderConstants.ORDER_DESC_LIMIT+'字）'} value={this.state.orderDescription} id='orderDesc_input' className={this.state.orderDesc_validate ? '' : 'error'} onChange={this._descInputChange.bind(this)}/>
                     </div>
-                    <input type='submit' value='确认创建'/>
+                    <input type='submit' value='确认创建' id='create_submit'/>
                 </form>
             </div>
         );
