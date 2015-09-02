@@ -10,11 +10,11 @@ let OrderActions = {
         });
     },
 
-    deleteOrder(item_id){
+    deleteOrder(id){
         console.log('Action: delete');
         AppDispatcher.dispatch({
             actionType: OrderConstants.DELETE_ORDER,
-            actionData: item_id
+            actionData: id
         });
     }
 }
