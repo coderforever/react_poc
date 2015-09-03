@@ -29,7 +29,7 @@ body{
     font-size:1.1em;
     cursor:pointer;
     color:white;
-    text-decoration:none;
+    text-decoration:none !important;
 }
 
 .menuItem:hover{
