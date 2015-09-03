@@ -43,19 +43,21 @@
 }
 
 .orderItem_red_btn{
-    background:#FD4F4F;
+    background:#d9534f;
 }
 
 .orderItem_red_btn:hover{
-    background:#F57777;
+    background:#d43f3a;
+    color:white;
 }
 
 .orderItem_btn{
-    background:#4DB5F9;
+    background:#5cb85c;
 }
 
 .orderItem_btn:hover{
-    background:#84CBF9;
+    background:#4cae4c;
+    color:white;
 }
 
 .orderPaginator{
