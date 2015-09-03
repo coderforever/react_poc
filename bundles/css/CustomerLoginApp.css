@@ -1,22 +1,28 @@
 #login-wrapper {
     margin: auto;
     margin-top: 120px;
-    max-width:600px;
-    margin-bottom:80px;
+    max-width: 600px;
+    margin-bottom: 80px;
 }
 
 .find-password {
     line-height: 2;
 }
 
-.login span{
+.login span {
     margin-left: 5px;
 }
 
-.login{
-    margin-top:20px;
+.login {
+    margin-top: 20px;
 }
 
-div.input-group{
+div.input-group {
     width: 100%;
+}
+
+#logo-footer span {
+    color: #999999;
+    line-height: 50px;
+    vertical-align: middle;
 }

@@ -5,7 +5,10 @@ export default class LogoFooter extends React.Component {
 
     render() {
         return (
-            <Navbar brand='OOTP Corporation 2015' fixedBottom>
+            <Navbar fixedBottom>
+                <div className='text-center'>
+                    <span>OOTP Corporation</span>
+                </div>
             </Navbar>
         )
     }
