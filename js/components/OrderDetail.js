@@ -7,7 +7,7 @@ export default class OrderDetail extends React.Component {
         let search=location.search, regex = /^\?id=(\d+)$/, results = regex.exec(search);
 
         if (results != null && results.length==2) {
-            let order=OrderStore.getDetail(results[1]);
+            let order=OrderStore.getOrder(results[1]);
             return (
                 <div className='orderDetail'>
                     <div className='orderTitle'>{order.name}</div>

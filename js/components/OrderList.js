@@ -26,7 +26,7 @@ export default class OrderList extends React.Component {
     render() {
         console.log("render");
 
-        let orderItems=[], store=OrderStore.listPage(this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
+        let orderItems=[], store=OrderStore.listOrders(this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
 
         for(let order of orderData){
             orderItems.push(<OrderItem key={order.id} oid={order.id} description={order.description} name={order.name} />);
