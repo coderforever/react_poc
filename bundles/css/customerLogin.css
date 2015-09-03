@@ -1,0 +1,29 @@
+#login-wrapper {
+    margin: auto;
+    display: table;
+    height: 400px;
+}
+
+#login-input {
+    margin: auto;
+    width: 90%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#register {
+    padding-left: 0px;
+    padding-bottom: 8px;
+}
+
+.find-password {
+    line-height: 2;
+}
+
+.login span{
+    margin-left: 5px;
+}
+
+div.input-group{
+    width: 100%;
+}
