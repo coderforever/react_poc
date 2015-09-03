@@ -6,7 +6,7 @@ import assign from 'object-assign';
 const CHANGE_EVENT='change';
 
 let OrderStore = assign({}, EventEmitter.prototype, {
-    listPage(page, size){
+    listOrders(page, size){
         //TODO: list a page of items
         return {
             page: page,
@@ -15,7 +15,7 @@ let OrderStore = assign({}, EventEmitter.prototype, {
        };
     },
 
-    getDetail(id){
+    getOrder(id){
         return {id:1, name:'订单名称订单名称', description:'订单描述信息'};
     },
 
