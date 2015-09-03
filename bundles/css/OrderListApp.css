@@ -10,7 +10,7 @@
     border-radius:10px;
     margin-top:15px;
     background:white;
-    height:179px;
+    height:184px;
     padding:10px 20px 10px 20px;
 }
 
@@ -25,7 +25,7 @@
 
 .orderItem_description{
     padding-top:5px;
-    height:95px;
+    height:100px;
     overflow:hidden;
     border-bottom:1.5px solid #F1F1F1;
     padding-bottom:5px;

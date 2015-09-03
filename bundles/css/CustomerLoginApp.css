@@ -1,18 +1,8 @@
 #login-wrapper {
     margin: auto;
-    height: 400px;
     margin-top: 120px;
     max-width:600px;
-}
-
-#login-input {
-    margin: auto;
-    width: 90%;
-}
-
-#register {
-    padding-left: 0px;
-    padding-bottom: 8px;
+    margin-bottom:80px;
 }
 
 .find-password {
@@ -21,6 +11,10 @@
 
 .login span{
     margin-left: 5px;
+}
+
+.login{
+    margin-top:20px;
 }
 
 div.input-group{

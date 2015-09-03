@@ -1,0 +1,10 @@
+.register span{
+    margin-left: 5px;
+}
+
+.panel{
+    margin: auto;
+    margin-top: 120px;
+    max-width: 600px;
+    margin-bottom:80px;
+}

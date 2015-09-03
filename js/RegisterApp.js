@@ -1,9 +1,9 @@
 import React from 'react';
 
-import CustomerLogin from './components/CustomerLogin';
+import Register from './components/Register';
 
 import LogoFooter from './components/LogoFooter';
 
-React.render(<CustomerLogin />, document.getElementById('login-wrapper'));
+React.render(<Register />, document.getElementById('register_panel'));
 
 React.render(<LogoFooter />, document.getElementById('logo-footer'));
