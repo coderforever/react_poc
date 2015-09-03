@@ -9,7 +9,7 @@
     border-radius:10px;
     margin-top:15px;
     background:white;
-    height:160px;
+    height:172px;
     padding:10px 20px 10px 20px;
 }
 
@@ -62,6 +62,7 @@
     height:50px;
     float:right;
     margin-top:15px;
+    margin-bottom:80px;
 }
 
 .pager{

@@ -3,14 +3,12 @@
 }
 
 .create_div{
-    margin-top:75px;
-    margin-left:auto;
-    margin-right:auto;
+    margin:75px auto 80px auto;
     width:600px;
     padding:20px;
     background:white;
     border-radius:10px;
-    height:310px;
+    height:396px;
 }
 
 label{

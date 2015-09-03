@@ -17,11 +17,6 @@ module.exports = {
             'webpack/hot/only-dev-server',
             './js/NewOrderApp.js'
         ],
-        LoginApp: [
-            'webpack-dev-server/client?http://127.0.0.1:3000',
-            'webpack/hot/only-dev-server',
-            './js/LoginApp.js'
-        ],
         CustomerLoginApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
