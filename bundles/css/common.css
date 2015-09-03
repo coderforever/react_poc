@@ -44,3 +44,9 @@ a{
     background:#84CBF9;
     color:white;
 }
+
+#logo-footer span {
+    color: #999999;
+    line-height: 50px;
+    vertical-align: middle;
+}
