@@ -22,14 +22,23 @@ let UserStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
+    let user=action.actionData,role,url;
 
     switch(action.actionType) {
         case UserConstants.LOGIN:
-            let user=action.actionData, role=user.role, name=user.name, password=user.password, url='/'+role+'/login';
-            $.post(url, {name:name,password:password}, function(result){
+            role=user.role;
+            url='/'+role+'/login';
+            $.post(url, user, function(result){
                 UserStore.emitChange(result.response, result.token);
             });
-            UserStore.emitChange('success', 'abacaca');
+            break;
+
+        case UserConstants.REGISTER:
+            role=user.userType;
+            url='/'+role+'/register';
+            $.post(url, user, function(result){
+                UserStore.emitChange(result.response);
+            });
             break;
 
         default:

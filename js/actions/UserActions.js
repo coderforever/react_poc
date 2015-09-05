@@ -8,6 +8,15 @@ let UserActions = {
             actionType: UserConstants.LOGIN,
             actionData: user
         });
+    },
+
+    register(user){
+        console.log('Action: register user');
+
+        AppDispatcher.dispatch({
+            actionType: UserConstants.REGISTER,
+            actionData: user
+        });
     }
 }
 

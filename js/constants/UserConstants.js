@@ -3,8 +3,10 @@ let UserConstants={
     VENDER_ROLE: 'vender',
     ADMIN_ROLE: 'admin',
     LOGIN: 'login',
-    LOGIN_SUCCESS: 'success',
-    LOGIN_FAILED: 'failed'
+    SUCCESS: 'success',
+    FAILED: 'failed',
+    ADDRESS_LENGTH_LIMIT: 30,
+    REGISTER: 'register'
 };
 
 export default UserConstants;
