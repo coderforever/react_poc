@@ -27,13 +27,9 @@ AppDispatcher.register(function(action) {
         case UserConstants.LOGIN:
             let user=action.actionData, role=user.role, name=user.name, password=user.password, url='/'+role+'/login';
             $.post(url, {name:name,password:password}, function(result){
-                if(result=="success"){
-                    UserStore.emitChange(UserConstants.LOGIN_SUCCESS);
-                }
-                else{
-                    UserStore.emitChange(UserConstants.LOGIN_FAILED);
-                }
+                UserStore.emitChange(result.response, result.token);
             });
+            UserStore.emitChange('success', 'abacaca');
             break;
 
         default:

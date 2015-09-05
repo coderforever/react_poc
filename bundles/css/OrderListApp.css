@@ -31,35 +31,6 @@
     padding-bottom:5px;
 }
 
-.orderItem_red_btn, .orderItem_btn{
-    line-height:20px;
-    padding:3px 10px 3px 10px;
-    float:right;
-    cursor:pointer;
-    margin-right:15px;
-    margin-top:10px;
-    color:white !important;
-    border-radius:5px;
-    text-decoration: none;
-    font-size:0.9em;
-}
-
-.orderItem_red_btn{
-    background:#d9534f;
-}
-
-.orderItem_red_btn:hover{
-    background:#d43f3a;
-}
-
-.orderItem_btn{
-    background:#5cb85c;
-}
-
-.orderItem_btn:hover{
-    background:#4cae4c;
-}
-
 .orderPaginator{
     height:50px;
     float:right;
@@ -82,4 +53,9 @@
 .pager:hover, .pager.current{
     background:#48A3D0;
     color:white;
+}
+
+.normal_btn, .red_btn{
+    margin-right:15px;
+    margin-top:10px;
 }

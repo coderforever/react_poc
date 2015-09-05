@@ -42,6 +42,10 @@ a{
     color:#31708f;
 }
 
+.personInfo{
+    float:right;
+}
+
 .menuItem:hover{
     border-bottom:2px solid #48A3D0;
     color:#48A3D0;
@@ -51,4 +55,31 @@ a{
     color: #999999;
     line-height: 50px;
     vertical-align: middle;
+}
+
+.red_btn, .normal_btn{
+    line-height:20px;
+    padding:3px 10px 3px 10px;
+    float:right;
+    cursor:pointer;
+    color:white !important;
+    border-radius:5px;
+    text-decoration: none;
+    font-size:0.9em;
+}
+
+.red_btn{
+    background:#d9534f;
+}
+
+.red_btn:hover{
+    background:#d43f3a;
+}
+
+.normal_btn{
+    background:#5cb85c;
+}
+
+.normal_btn:hover{
+    background:#4cae4c;
 }

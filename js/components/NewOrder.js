@@ -1,7 +1,6 @@
 import React from 'react';
 import OrderActions from '../actions/OrderActions';
 import OrderConstants from '../constants/OrderConstants';
-import { Button } from 'react-bootstrap';
 
 export default class NewOrder extends React.Component {
     constructor(){
@@ -23,7 +22,7 @@ export default class NewOrder extends React.Component {
                     <input type='text' placeholder={'请输入订单名称（不超过'+OrderConstants.ORDER_NAME_LIMIT+'字）'} value={this.state.orderName} id='orderName_input' className={this.state.orderName_validate ? '' : 'error'} onChange={this._nameInputChange.bind(this)}/><br/>
                     <label htmlFor='orderDesc_input' className='submit_label'>描述信息: </label><br/>
                     <textarea placeholder={'请输入描述信息（不超过'+OrderConstants.ORDER_DESC_LIMIT+'字）'} value={this.state.orderDescription} id='orderDesc_input' className={this.state.orderDesc_validate ? '' : 'error'} onChange={this._descInputChange.bind(this)}/><br/>
-                    <Button bsStyle='success' type='submit' id='create_submit'>确认创建</Button>
+                    <button type='submit' id='create_submit' className='normal_btn'>确认创建</button>
                 </form>
             </div>
         );
