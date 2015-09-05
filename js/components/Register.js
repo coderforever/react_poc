@@ -4,9 +4,7 @@ import { Panel, Glyphicon, Input, Button } from 'react-bootstrap';
 export default class CustomerLogin extends React.Component {
 
     render() {
-        const title = (<h3>用户注册</h3>);
-        const phoneIcon = <Glyphicon glyph='phone'/>;
-        const passwordIcon = <Glyphicon glyph='lock'/>;
+        let title = (<h3>用户注册</h3>), phoneIcon = <Glyphicon glyph='phone'/>, passwordIcon = <Glyphicon glyph='lock'/>;
         return (
             <Panel header={title} bsStyle='info'>
                 <Input type='text' addonBefore={phoneIcon} placeholder='请输入手机号码'/>

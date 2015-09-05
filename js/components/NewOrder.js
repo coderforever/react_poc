@@ -42,35 +42,19 @@ export default class NewOrder extends React.Component {
     }
 
     _nameInputChange(event){
-        var value=event.target.value;
-        if(value.length>OrderConstants.ORDER_NAME_LIMIT){
-            this.setState({
-                orderName_validate:false,
-                orderName: event.target.value
-            });
-        }
-        else{
-            this.setState({
-                orderName_validate:true,
-                orderName: event.target.value
-            });
-        }
+        let value=event.target.value;
+        this.setState({
+            orderName_validate:value.length<=OrderConstants.ORDER_NAME_LIMIT,
+            orderName: value
+        });
     }
 
     _descInputChange(event){
-        var value=event.target.value;
-        if(value.length>OrderConstants.ORDER_DESC_LIMIT){
-            this.setState({
-                orderDesc_validate:false,
-                orderDescription: event.target.value
-            });
-        }
-        else{
-            this.setState({
-                orderDesc_validate:true,
-                orderDescription: event.target.value
-            });
-        }
+        let value=event.target.value;
+        this.setState({
+            orderDesc_validate:value.length<=OrderConstants.ORDER_DESC_LIMIT,
+            orderDescription: value
+        });
     }
 
 }

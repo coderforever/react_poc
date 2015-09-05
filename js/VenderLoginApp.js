@@ -6,6 +6,6 @@ import LogoFooter from './components/LogoFooter';
 
 import UserConstants from './constants/UserConstants';
 
-React.render(<Login role={UserConstants.CUSTOMER_ROLE} title='买家登录' />, document.getElementById('login-wrapper'));
+React.render(<Login role={UserConstants.VENDER_ROLE} title='商家登录'/>, document.getElementById('login-wrapper'));
 
 React.render(<LogoFooter />, document.getElementById('logo-footer'));

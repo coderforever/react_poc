@@ -38,7 +38,7 @@
     cursor:pointer;
     margin-right:15px;
     margin-top:10px;
-    color:white;
+    color:white !important;
     border-radius:5px;
     text-decoration: none;
     font-size:0.9em;
@@ -50,7 +50,6 @@
 
 .orderItem_red_btn:hover{
     background:#d43f3a;
-    color:white;
 }
 
 .orderItem_btn{
@@ -59,7 +58,6 @@
 
 .orderItem_btn:hover{
     background:#4cae4c;
-    color:white;
 }
 
 .orderPaginator{
@@ -73,15 +71,15 @@
     padding:5px 9px 5px 9px;
     float:left;
     text-align: center;
-    border:1px solid #4DB5F9;
+    border:1px solid #48A3D0;
     background:white;
     margin-right:7px;
     cursor:pointer;
-    color:#4DB5F9;
+    color:#48A3D0;
     border-radius:5px;
 }
 
 .pager:hover, .pager.current{
-    background:#4DB5F9;
+    background:#48A3D0;
     color:white;
 }

@@ -9,14 +9,17 @@ a{
     text-decoration:none !important;
 }
 
+.error{
+    background:#F9D6D6;
+}
+
 .orderMenuBar{
     width:100%;
     height:55px;
-    background:#4DB5F9;
+    background:#d9edf7;
     position:fixed;
     left:0px;
     top:0px;
-    opacity:0.8;
 }
 
 .navbar-fixed-bottom{
@@ -36,13 +39,12 @@ a{
     font-weight:bold;
     font-size:1.1em;
     cursor:pointer;
-    color:white;
+    color:#31708f;
 }
 
 .menuItem:hover{
-    border-bottom:2px solid #0091F1;
-    background:#84CBF9;
-    color:white;
+    border-bottom:2px solid #48A3D0;
+    color:#48A3D0;
 }
 
 #logo-footer span {
