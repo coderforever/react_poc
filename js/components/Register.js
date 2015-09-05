@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel, Glyphicon, Input, Button } from 'react-bootstrap';
+import { Panel, Glyphicon, Input, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import UserActions from '../actions/UserActions';
 import UserConstants from '../constants/UserConstants';
 import UserStore from '../stores/UserStore';
@@ -16,8 +16,9 @@ export default class CustomerLogin extends React.Component {
             password_validate:true,
             address:'',
             address_validate:true,
-            venderid:'',
-            venderid_validate:true
+            venderID:'',
+            venderName:'',
+            vender_validate:true
         };
     }
 
@@ -31,6 +32,16 @@ export default class CustomerLogin extends React.Component {
 
     render() {
         let title = (<h3>用户注册</h3>), phoneIcon = <Glyphicon glyph='phone'/>, passwordIcon = <Glyphicon glyph='lock'/>, locationIcon=<Glyphicon glyph='home'/>;
+        let otherFields=<Input type='text' addonBefore={locationIcon} placeholder={'请输入联系地址（不超过'+UserConstants.ADDRESS_LENGTH_LIMIT+'字）'} className={this.state.address_validate ? '' : 'error'} value={this.state.address} onChange={this._addressInputChange.bind(this)}/>;
+        if(this.state.userType==UserConstants.VENDER_ROLE){
+            otherFields=(
+                <DropdownButton bsStyle={this.state.vender_validate ? 'default':'danger'} title={this.state.venderID=='' ? '请选择商铺':this.state.venderName} onSelect={this._venderChange.bind(this)}>
+                    <MenuItem eventKey='Vender1#1'>Vender1</MenuItem>
+                    <MenuItem eventKey='Vender2#2'>Vender2</MenuItem>
+                    <MenuItem eventKey='Vender3#3'>Vender3</MenuItem>
+                </DropdownButton>
+            );
+        }
         return (
             <form onSubmit={this._registerUser.bind(this)}>
                 <Panel header={title} bsStyle='info'>
@@ -44,7 +55,7 @@ export default class CustomerLogin extends React.Component {
                     <Input type='text' addonBefore={phoneIcon} placeholder='请输入手机号码' value={this.state.phone} className={this.state.phone_validate ? '' : 'error'} onChange={this._phoneInputChange.bind(this)}/>
                     <Input type='password' id='password1' addonBefore={passwordIcon} placeholder='请输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
                     <Input type='password' id='password2' addonBefore={passwordIcon} placeholder='请再次输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
-                    <Input type='text' addonBefore={locationIcon} placeholder={'请输入联系地址（不超过'+UserConstants.ADDRESS_LENGTH_LIMIT+'字）'} className={this.state.address_validate ? '' : 'error'} value={this.state.address} onChange={this._addressInputChange.bind(this)}/>
+                    {otherFields}
                     <Button type='submit' bsStyle='success' className='register' block><Glyphicon glyph='user'/>注册</Button>
                 </Panel>
             </form>
@@ -78,6 +89,15 @@ export default class CustomerLogin extends React.Component {
         });
     }
 
+    _venderChange(event, key){
+        let arr=key.split('#');
+        this.setState({
+            venderID:arr[1],
+            venderName:arr[0],
+            vender_validate:true
+        });
+    }
+
     _registerUser(event){
         // prevent form submit by default
         event.preventDefault();
@@ -97,11 +117,19 @@ export default class CustomerLogin extends React.Component {
             });
             return;
         }
-        let addressValue=this.state.address, userType=this.state.userType;
+        let addressValue=this.state.address, userType=this.state.userType, venderID=this.state.venderID;
         if(userType==UserConstants.CUSTOMER_ROLE){
             if(addressValue=='' || addressValue.length>UserConstants.ADDRESS_LENGTH_LIMIT){
                 this.setState({
                     address_validate: false
+                });
+                return;
+            }
+        }
+        else if(userType==UserConstants.VENDER_ROLE){
+            if(venderID==''){
+                this.setState({
+                   vender_validate: false
                 });
                 return;
             }
@@ -111,7 +139,7 @@ export default class CustomerLogin extends React.Component {
             phone: phoneValue,
             password: password1,
             address: addressValue,
-            venderid: null,
+            venderID: venderID,
             userType: userType
         });
     }
