@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "server": "node server.js"
+    "server": "node server.js",
+    "publish": "cp -R *.html bundles /home/developer/ootp/ootp-server/views"
   },
   "author": "frank.shaof",
   "license": "ISC",
