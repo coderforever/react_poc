@@ -20,3 +20,12 @@
 div.input-group {
     width: 100%;
 }
+
+.login-enter{
+    transform:scale(1.2);
+    transition:transform 0.2s cubic-bezier(.97,.84,.5,1.21);
+}
+
+.login-enter-active{
+    transform:scale(1);
+}
