@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "server": "node server.js",
-    "publish": "cp -R *.html bundles /home/developer/ootp/ootp-server/views"
+    "publish": "scp -r *.html bundles/ root@180.169.76.235:/home/developer/ootp/ootp-server/views/"
   },
   "author": "frank.shaof",
   "license": "ISC",
