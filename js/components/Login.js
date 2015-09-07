@@ -82,8 +82,8 @@ export default class Login extends React.Component {
 
     _onLogin(response, token){
         if(response==UserConstants.SUCCESS){
-            localStorage["token"]=token;
-            window.location.href='orderList.html';
+            localStorage['token']=token;
+            window.location.href=UserConstants.LOGIN_SUCCESS_URL[this.props.role];
         }
         else{
             this.setState({
