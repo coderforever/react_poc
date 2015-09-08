@@ -37,7 +37,7 @@ AppDispatcher.register(function(action) {
             role=user.userType;
             url='/register/user';
             if(role==UserConstants.VENDER_ROLE){
-                url='/admin/register/vender';
+                url='/register/vender';
             }
             $.post(url, user, function(result){
                 UserStore.emitChange(result.code);

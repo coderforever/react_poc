@@ -57,7 +57,7 @@ export default class CustomerLogin extends React.Component {
                     <Input type='password' id='password1' addonBefore={passwordIcon} placeholder='请输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
                     <Input type='password' id='password2' addonBefore={passwordIcon} placeholder='请再次输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
                     {otherFields}
-                    { this.state.register_success==false ? (<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>注册失败！</strong>请重试。</div>) : '' }
+                    { this.state.register_success==false ? (<div className="alert alert-error"><a className="close" data-dismiss="alert">×</a><strong>注册失败！</strong>请重试。</div>) : '' }
                     <Button type='submit' bsStyle='success' className='register' block><Glyphicon glyph='user'/>注册</Button>
                 </Panel>
             </form>
