@@ -39,7 +39,7 @@ export default class Login extends React.Component {
                         <Glyphicon glyph='question-sign'/>找回密码
                     </Button>
                 </div>
-                { this.state.login_success==false ? (<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>登录失败！</strong>用户名或者密码错误</div>) : '' }
+                { this.state.login_success==false ? (<div className="alert alert-error"><a className="close" data-dismiss="alert">×</a><strong>登录失败！</strong>用户名或者密码错误</div>) : '' }
                 <Button bsStyle='success' className='login' block onClick={this._executeLogin.bind(this)}><Glyphicon glyph='log-in'/>登录</Button>
             </Panel>
         );
