@@ -1,9 +1,10 @@
 import React from 'react';
 import OrderActions from '../actions/OrderActions';
+import UserConstants from '../constants/UserConstants';
 
 export default class OrderList extends React.Component {
     render(){
-        let id=this.props.oid, name=this.props.name, description=this.props.description;
+        let id=this.props.oid, name=this.props.name, description=this.props.description, detailLink=(this.props.role==UserConstants.CUSTOMER_ROLE ? 'customerOrderDetail.html' : 'venderOrderDetail.html');
 
         return (
             <div className='orderItem'>
@@ -15,7 +16,7 @@ export default class OrderList extends React.Component {
                     <a className='normal_btn' onClick={()=>this._confirmOrder(id)} href='javascript:;'>确认完成</a>
                     <a className='normal_btn' onClick={()=>this._completeOrder(id)} href='javascript:;'>完成订单</a>
                     <a className='normal_btn' onClick={()=>this._acceptOrder(id)} href='javascript:;'>接受订单</a>
-                    <a className='normal_btn' href={'orderDetail.html?id='+id} target='_blank'>查看详情</a>
+                    <a className='normal_btn' href={detailLink+'?id='+id} target='_blank'>查看详情</a>
                 </div>
             </div>
         );
