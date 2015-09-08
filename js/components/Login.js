@@ -12,7 +12,8 @@ export default class Login extends React.Component {
             phone: '',
             password: '',
             phone_validate:true,
-            password_validate:true
+            password_validate:true,
+            login_success:true
         };
     }
 
@@ -38,6 +39,7 @@ export default class Login extends React.Component {
                         <Glyphicon glyph='question-sign'/>找回密码
                     </Button>
                 </div>
+                { this.state.login_success==false ? (<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>登录失败！</strong>用户名或者密码错误</div>) : '' }
                 <Button bsStyle='success' className='login' block onClick={this._executeLogin.bind(this)}><Glyphicon glyph='log-in'/>登录</Button>
             </Panel>
         );
@@ -87,8 +89,7 @@ export default class Login extends React.Component {
         }
         else{
             this.setState({
-                phone_validate:false,
-                password_validate:false
+                login_success:false
             });
         }
     }

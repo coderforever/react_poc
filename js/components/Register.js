@@ -18,7 +18,8 @@ export default class CustomerLogin extends React.Component {
             address_validate:true,
             venderID:'',
             venderName:'',
-            vender_validate:true
+            vender_validate:true,
+            register_success: true
         };
     }
 
@@ -56,6 +57,7 @@ export default class CustomerLogin extends React.Component {
                     <Input type='password' id='password1' addonBefore={passwordIcon} placeholder='请输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
                     <Input type='password' id='password2' addonBefore={passwordIcon} placeholder='请再次输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
                     {otherFields}
+                    { this.state.register_success==false ? (<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>注册失败！</strong>请重试。</div>) : '' }
                     <Button type='submit' bsStyle='success' className='register' block><Glyphicon glyph='user'/>注册</Button>
                 </Panel>
             </form>
@@ -156,7 +158,7 @@ export default class CustomerLogin extends React.Component {
         }
         else{
             this.setState({
-                phone_validate:false
+                register_success:false
             });
         }
     }
