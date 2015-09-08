@@ -35,7 +35,7 @@ AppDispatcher.register(function(action) {
 
         case UserConstants.REGISTER:
             role=user.userType;
-            url='/'+role+'/register';
+            url='/register/'+role;
             $.post(url, user, function(result){
                 UserStore.emitChange(result.response);
             });
