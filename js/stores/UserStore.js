@@ -27,17 +27,20 @@ AppDispatcher.register(function(action) {
     switch(action.actionType) {
         case UserConstants.LOGIN:
             role=user.role;
-            url='/'+role+'/login';
+            url='/login/'+role;
             $.post(url, user, function(result){
-                UserStore.emitChange(result.response, result.token);
+                UserStore.emitChange(result.code, result.token);
             });
             break;
 
         case UserConstants.REGISTER:
             role=user.userType;
-            url='/register/'+role;
+            url='/register/user';
+            if(role==UserConstants.VENDER_ROLE){
+                url='/admin/register/vender';
+            }
             $.post(url, user, function(result){
-                UserStore.emitChange(result.response);
+                UserStore.emitChange(result.code);
             });
             break;
 

@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "server": "node server.js",
-    "publish": "scp -r *.html bundles/ root@180.169.76.235:/home/developer/ootp/ootp-server/public/"
+    "debug": "webpack --config webpack.config.js && node server.js",
+    "publish": "webpack --config publish.config.js && scp -r *.html bundles/ root@180.169.76.235:/home/developer/ootp/ootp-server/public/"
   },
   "author": "frank.shaof",
   "license": "ISC",

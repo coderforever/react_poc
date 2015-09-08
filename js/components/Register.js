@@ -136,7 +136,7 @@ export default class CustomerLogin extends React.Component {
         }
 
         UserActions.register({
-            phone: phoneValue,
+            name: phoneValue,
             password: password1,
             address: addressValue,
             venderID: venderID,
