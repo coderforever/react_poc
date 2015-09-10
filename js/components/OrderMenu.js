@@ -8,9 +8,9 @@ export default class OrderMenu extends React.Component {
         return (
             <div className='orderMenuBar'>
                 <div className='menuGroup'>
-                    <Link className='menuItem' to={ this.props.role == UserConstants.CUSTOMER_ROLE ? '/customer/order/list' : '/vender/order/list'}>订单管理</Link>
+                    <Link className='menuItem' to={'/'+this.props.role+'/order/list'}>订单管理</Link>
                     { this.props.role == UserConstants.CUSTOMER_ROLE ? (
-                        <Link className='menuItem' to='/customer/order/new'>创建订单</Link>) : '' }
+                        <Link className='menuItem' to='/user/order/new'>创建订单</Link>) : '' }
                     <Link className='menuItem personInfo' to={'/'+this.props.role+'/order/list'}><span className="glyphicon glyphicon-user"></span></Link>
                 </div>
             </div>

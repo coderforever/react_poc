@@ -12,10 +12,10 @@ export default class CustomerOrderRouter extends React.Component {
             <Router history={history}>
                 <Route name='html' path='/customerOrder.html' component={CustomerOrderListApp}/>
                 <Route name='root' path='/' component={CustomerOrderListApp}/>
-                <Route name='customerOrderList' path='/customer/order/list' component={CustomerOrderListApp}/>
-                <Route name='customerOrderDetail' path='/customer/order/detail/id/:id'
+                <Route name='customerOrderList' path='/user/order/list' component={CustomerOrderListApp}/>
+                <Route name='customerOrderDetail' path='/user/order/detail/id/:id'
                        component={CustomerOrderDetailApp}/>
-                <Route name='newOrder' path='/customer/order/new' component={NewOrderApp}/>
+                <Route name='newOrder' path='/user/order/new' component={NewOrderApp}/>
 
             </Router>
         );
