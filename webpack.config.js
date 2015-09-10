@@ -2,30 +2,15 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-        CustomerOrderListApp: [
+        CustomerOrderApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
-            './js/CustomerOrderListApp.js'
+            './js/CustomerOrderApp.js'
         ],
-        VenderOrderListApp: [
+        VenderOrderApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
-            './js/VenderOrderListApp.js'
-        ],
-        CustomerOrderDetailApp: [
-            'webpack-dev-server/client?http://127.0.0.1:3000',
-            'webpack/hot/only-dev-server',
-            './js/CustomerOrderDetailApp.js'
-        ],
-        VenderOrderDetailApp: [
-            'webpack-dev-server/client?http://127.0.0.1:3000',
-            'webpack/hot/only-dev-server',
-            './js/VenderOrderDetailApp.js'
-        ],
-        NewOrderApp: [
-            'webpack-dev-server/client?http://127.0.0.1:3000',
-            'webpack/hot/only-dev-server',
-            './js/NewOrderApp.js'
+            './js/VenderOrderApp.js'
         ],
         CustomerLoginApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',

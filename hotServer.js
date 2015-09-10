@@ -3,7 +3,7 @@ var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
-    hot: false,
+    hot: true,
     noInfo: false,
     historyApiFallback: true
 }).listen(3000, '127.0.0.1', function (err, result) {
