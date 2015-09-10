@@ -18,24 +18,5 @@ export default class OrderList extends React.Component {
         );
     }
 
-    _deleteOrder(id) {
-        console.log('Delete order: ' + id);
-        OrderActions.deleteOrder(id);
-    }
 
-    _rejectOrder(id) {
-        console.log('Reject order: ' + id);
-    }
-
-    _confirmOrder(id) {
-        console.log('Confirm order: ' + id);
-    }
-
-    _completeOrder(id) {
-        console.log('Complete order: ' + id);
-    }
-
-    _acceptOrder(id) {
-        console.log('Accept order: ' + id);
-    }
 }
