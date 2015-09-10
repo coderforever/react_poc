@@ -38,4 +38,6 @@ textarea{
 #create_submit{
     float:right;
     border:none;
+    margin-top:0px;
+    margin-right:0px;
 }

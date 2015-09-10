@@ -17,6 +17,7 @@ export default class OrderDetail extends React.Component {
                     <a className='normal_btn' onClick={()=>this._confirmOrder(id)} href='javascript:;'>确认完成</a>
                     <a className='normal_btn' onClick={()=>this._completeOrder(id)} href='javascript:;'>完成订单</a>
                     <a className='normal_btn' onClick={()=>this._acceptOrder(id)} href='javascript:;'>接受订单</a>
+                    <div style={{clear:'both'}}></div>
                 </div>
             );
         }
