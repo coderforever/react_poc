@@ -9,7 +9,6 @@ module.exports = {
         RegisterApp: './js/RegisterApp.js'
 	},
 	output: {
-	    publicPath: 'http://127.0.0.1:3000/bundles/',
 		path: __dirname + '/bundles/',
 		filename: '[name].js'
 	},
@@ -20,12 +19,12 @@ module.exports = {
 	    loaders: [
 	        {
                 test: /\.js$/,
-                loader: 'react-hot!babel-loader',
+                loader: 'babel-loader',
                 exclude: /node_modules/
             },
             {
                 test: /\.jsx$/,
-                loader: 'react-hot!babel-loader!jsx-loader?harmony',
+                loader: 'babel-loader!jsx-loader?harmony',
                 exclude: /node_modules/
             }
         ]

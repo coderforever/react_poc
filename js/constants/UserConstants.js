@@ -1,5 +1,5 @@
 let UserConstants={
-    CUSTOMER_ROLE: 'customer',
+    CUSTOMER_ROLE: 'user',
     VENDER_ROLE: 'vender',
     ADMIN_ROLE: 'admin',
     LOGIN: 'login',
@@ -9,8 +9,8 @@ let UserConstants={
     CUSTOMER_LOGIN_URL: 'customerLogin.html',
     VENDER_LOGIN_URL: 'venderLogin.html',
     LOGIN_SUCCESS_URL:{
-        customer: 'customerOrderList.html',
-        vender: 'venderOrderList.html'
+        customer: 'customerOrder.html',
+        vender: 'venderOrder.html'
     }
 };
 
