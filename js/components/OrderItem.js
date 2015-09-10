@@ -12,6 +12,11 @@ export default class OrderList extends React.Component {
                 <div className='orderItem_name'>{name}</div>
                 <div className='orderItem_description'>{description}</div>
                 <div className='orderItem_operations'>
+                    <a className='red_btn' onClick={()=>this._deleteOrder(id)} href='javascript:;'>删除</a>
+                    <a className='red_btn' onClick={()=>this._rejectOrder(id)} href='javascript:;'>拒绝订单</a>
+                    <a className='normal_btn' onClick={()=>this._confirmOrder(id)} href='javascript:;'>确认完成</a>
+                    <a className='normal_btn' onClick={()=>this._completeOrder(id)} href='javascript:;'>完成订单</a>
+                    <a className='normal_btn' onClick={()=>this._acceptOrder(id)} href='javascript:;'>接受订单</a>
                     <Link to={'/detail/id'+`/${id}`} className='normal_btn'> 查看详情</Link>
                 </div>
             </div>
