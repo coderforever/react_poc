@@ -2,11 +2,8 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-        CustomerOrderListApp: './js/CustomerOrderListApp.js',
-        VenderOrderListApp: './js/VenderOrderListApp.js',
-        CustomerOrderDetailApp: './js/CustomerOrderDetailApp.js',
-        VenderOrderDetailApp: './js/VenderOrderDetailApp.js',
-        NewOrderApp: './js/NewOrderApp.js',
+        VenderOrderApp: './js/VenderOrderApp.js',
+        CustomerOrderApp: './js/CustomerOrderApp.js',
         CustomerLoginApp: './js/CustomerLoginApp.js',
         VenderLoginApp: './js/VenderLoginApp.js',
         RegisterApp: './js/RegisterApp.js'
