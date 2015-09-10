@@ -24,7 +24,7 @@ export default class OrderList extends React.Component {
     }
 
     render() {
-        console.log("render");
+        console.log("customer order list render");
 
         let orderItems=[], role=this.props.role, store=OrderStore.listOrders(role, this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
 

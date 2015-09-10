@@ -10,7 +10,7 @@ export default class CustomerOrderListApp {
     render() {
         return (
             <div>
-                <OrderMenu role={UserConstants.CUSTOMER_ROLE} />
+                <OrderMenu role={UserConstants.CUSTOMER_ROLE}/>
                 <OrderDetail />
             </div>
         );

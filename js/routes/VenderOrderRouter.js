@@ -9,8 +9,10 @@ export default class VenderOrderRouter extends React.Component {
         const { history } = this.props;
         return (
             <Router history={history}>
-                <Route name='list' path='/venderOrder.html' component={VenderOrderListApp}/>
-                <Route name='detail' path='/detail/id/:id' component={VenderOrderDetailApp}/>
+                <Route name='html' path='/venderOrder.html' component={VenderOrderListApp}/>
+                <Route name='root' path='/' component={VenderOrderListApp}/>
+                <Route name='venderOrderList' path='/vender/order/list' component={VenderOrderListApp}/>
+                <Route name='venderOrderDetail' path='/vender/order/detail/id/:id' component={VenderOrderDetailApp}/>
             </Router>
         );
     }
