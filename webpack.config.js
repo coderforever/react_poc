@@ -26,11 +26,6 @@ module.exports = {
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
             './js/RegisterApp.js'
-        ],
-        NewOrderApp: [
-            'webpack-dev-server/client?http://127.0.0.1:3000',
-            'webpack/hot/only-dev-server',
-            './js/NewOrderApp.js'
         ]
 	},
 	output: {
