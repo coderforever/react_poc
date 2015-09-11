@@ -9,7 +9,7 @@ let UserConstants={
     CUSTOMER_LOGIN_URL: 'customerLogin.html',
     VENDER_LOGIN_URL: 'venderLogin.html',
     LOGIN_SUCCESS_URL:{
-        customer: 'customerOrder.html',
+        user: 'customerOrder.html',
         vender: 'venderOrder.html'
     }
 };
