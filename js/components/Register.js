@@ -33,7 +33,7 @@ export default class CustomerLogin extends React.Component {
                     this.state.venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
                 }
             }
-        });
+        }.bind(this));
     }
 
     componentWillUnmount() {
