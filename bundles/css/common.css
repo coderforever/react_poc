@@ -46,7 +46,7 @@ a{
     float:right;
 }
 
-.menuItem:hover{
+.menuItem:hover, .menuItem.current{
     border-bottom:2px solid #48A3D0;
     color:#48A3D0;
 }
