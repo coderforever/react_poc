@@ -1,8 +1,7 @@
 let PermissionCheck={
     loginCheck(loginURL){
         if(typeof localStorage['token']==='undefined'){
-            //window.location.href=loginURL;
-            console.log(loginURL);
+            window.location.href=loginURL;
         }
     }
 };
