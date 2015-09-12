@@ -33,7 +33,7 @@ a{
     margin-right:auto;
 }
 
-.menuItem{
+.menuItem, .menuItem:visited{
     float:left;
     padding:18px 20px 16px 20px;
     font-weight:bold;
