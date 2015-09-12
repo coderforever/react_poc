@@ -2,6 +2,7 @@ import React from 'react';
 import { Panel, Glyphicon, Input, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import UserActions from '../actions/UserActions';
 import UserConstants from '../constants/UserConstants';
+import Codes from '../constants/Codes';
 import UserStore from '../stores/UserStore';
 import $ from 'jquery';
 
@@ -28,8 +29,9 @@ export default class CustomerLogin extends React.Component {
     componentDidMount() {
         UserStore.addChangeListener(this._onRegister.bind(this));
         $.get('/venders', function(result){
-            if(result.code==UserConstants.SUCCESS){
-                for(let vender of result.venders){
+            if(result.code==Codes.SUCCESS){
+                for(let i=0; i<result.venders.length; i++){
+                    let vender=result.venders[i];
                     this.state.venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
                 }
             }
@@ -44,7 +46,7 @@ export default class CustomerLogin extends React.Component {
         let title = (<h3>用户注册</h3>), phoneIcon = <Glyphicon glyph='phone'/>, passwordIcon = <Glyphicon glyph='lock'/>, locationIcon=<Glyphicon glyph='home'/>;
         let otherFields=<Input type='text' addonBefore={locationIcon} placeholder={'请输入联系地址（不超过'+UserConstants.ADDRESS_LENGTH_LIMIT+'字）'} className={this.state.address_validate ? '' : 'error'} value={this.state.address} onChange={this._addressInputChange.bind(this)}/>;
         if(this.state.userType==UserConstants.VENDER_ROLE){
-            if(typeof this.state.venderMenuItems!=='undefined' && this.state.venderMenuItems.length>0){
+            if(this.state.venderMenuItems.length>0){
                 otherFields=(
                     <DropdownButton bsStyle={this.state.vender_validate ? 'default':'danger'} title={this.state.venderID=='' ? '请选择商铺':this.state.venderName} onSelect={this._venderChange.bind(this)}>
                         {this.state.venderMenuItems}
@@ -159,7 +161,7 @@ export default class CustomerLogin extends React.Component {
     }
 
     _onRegister(response){
-        if(response==UserConstants.SUCCESS){
+        if(response==Codes.SUCCESS){
             let userType=this.state.userType;
             if(userType==UserConstants.CUSTOMER_ROLE){
                 window.location.href='customerLogin.html';

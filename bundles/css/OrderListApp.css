@@ -10,8 +10,13 @@
     border-radius:10px;
     margin-top:15px;
     background:white;
-    height:184px;
     padding:10px 20px 10px 20px;
+    border:2px solid #F1F1F1;
+    cursor:pointer;
+}
+
+.orderItem:hover{
+    border:2px solid #d9edf7;
 }
 
 .orderItem_name{
@@ -27,7 +32,6 @@
     padding-top:5px;
     height:100px;
     overflow:hidden;
-    border-bottom:1.5px solid #F1F1F1;
     padding-bottom:5px;
 }
 

@@ -3,7 +3,6 @@ let UserConstants={
     VENDER_ROLE: 'vender',
     ADMIN_ROLE: 'admin',
     LOGIN: 'login',
-    SUCCESS: 'SUCCESS',
     ADDRESS_LENGTH_LIMIT: 30,
     REGISTER: 'register',
     CUSTOMER_LOGIN_URL: 'customerLogin.html',

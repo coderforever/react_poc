@@ -28,7 +28,8 @@ export default class OrderList extends React.Component {
 
         let orderItems=[], role=this.props.role, store=OrderStore.listOrders(role, this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
 
-        for(let order of orderData){
+        for(let i=0; i<orderData.length;i++){
+            let order=orderData[i];
             orderItems.push(<OrderItem role={role} key={order.id} oid={order.id} description={order.description} name={order.name} />);
         }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Panel, Glyphicon, Input, Button } from 'react-bootstrap';
 import UserActions from '../actions/UserActions';
 import UserConstants from '../constants/UserConstants';
+import Codes from '../constants/Codes';
 import UserStore from '../stores/UserStore';
 
 export default class Login extends React.Component {
@@ -83,7 +84,7 @@ export default class Login extends React.Component {
     }
 
     _onLogin(response, token){
-        if(response==UserConstants.SUCCESS){
+        if(response==Codes.SUCCESS){
             localStorage['token']=token;
             window.location.href=UserConstants.LOGIN_SUCCESS_URL[this.props.role];
         }

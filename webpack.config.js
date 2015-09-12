@@ -2,15 +2,30 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-        CustomerOrderApp: [
+        CustomerOrderListApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
-            './js/CustomerOrderApp.js'
+            './js/CustomerOrderListApp.js'
         ],
-        VenderOrderApp: [
+        CustomerOrderDetailApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
-            './js/VenderOrderApp.js'
+            './js/CustomerOrderDetailApp.js'
+        ],
+        NewOrderApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/NewOrderApp.js'
+        ],
+        VenderOrderListApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/VenderOrderListApp.js'
+        ],
+        VenderOrderDetailApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/VenderOrderDetailApp.js'
         ],
         CustomerLoginApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
@@ -51,11 +66,6 @@ module.exports = {
         ]
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ]
