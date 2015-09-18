@@ -59,8 +59,7 @@ a{
 
 .red_btn, .normal_btn{
     line-height:20px;
-    padding:3px 10px 3px 10px;
-    float:right;
+    padding:5px 10px 5px 10px;
     cursor:pointer;
     color:white !important;
     border-radius:5px;
@@ -92,4 +91,9 @@ a{
     border: 1px solid rgb(255, 38, 54);
     color: rgb(255, 38, 54);
     padding:10px;
+}
+
+.orderAcceptOps, .orderDenialOps {
+    float: right;
+    margin-bottom: 10px;
 }

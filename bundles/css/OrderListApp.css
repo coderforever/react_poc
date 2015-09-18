@@ -1,65 +1,66 @@
-.orderList{
-    max-width:600px;
-    width:95%;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:75px;
+.orderList {
+    max-width: 600px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 75px;
 }
 
-.orderItem{
-    border-radius:10px;
-    margin-top:15px;
-    background:white;
-    padding:10px 20px 10px 20px;
-    border:4px solid #F1F1F1;
-    cursor:pointer;
+.orderItem {
+    border-radius: 10px;
+    margin-top: 15px;
+    background: white;
+    padding: 10px 20px 10px 20px;
+    border: 4px solid #F1F1F1;
+    cursor: pointer;
 }
 
-.orderItem:hover{
-    border:4px solid #d9edf7;
+.orderItem:hover {
+    border: 4px solid #d9edf7;
 }
 
-.orderItem_name{
+.orderItem_name {
     font-weight: bold;
-    font-size:1.2em;
-    border-bottom:1.5px solid #F1F1F1;
-    padding-bottom:5px;
-    overflow:hidden;
-    text-align:center;
-}
-
-.orderItem_description{
-    padding-top:5px;
-    height:100px;
-    overflow:hidden;
-    padding-bottom:5px;
-}
-
-.orderPaginator{
-    height:50px;
-    float:right;
-    margin-top:15px;
-    margin-bottom:80px;
-}
-
-.pager{
-    padding:5px 9px 5px 9px;
-    float:left;
+    font-size: 1.2em;
+    border-bottom: 1.5px solid #F1F1F1;
+    padding-bottom: 5px;
+    overflow: hidden;
     text-align: center;
-    border:1px solid #48A3D0;
-    background:white;
-    margin-right:7px;
-    cursor:pointer;
-    color:#48A3D0;
-    border-radius:5px;
 }
 
-.pager:hover, .pager.current{
-    background:#48A3D0;
-    color:white;
+.orderItem_description {
+    padding-top: 5px;
+    height: 100px;
+    overflow: hidden;
+    padding-bottom: 5px;
 }
 
-.normal_btn, .red_btn{
-    margin-right:15px;
-    margin-top:10px;
+.orderPaginator {
+    height: 50px;
+    float: right;
+    margin-top: 15px;
+    margin-bottom: 80px;
 }
+
+.pager {
+    padding: 5px 9px 5px 9px;
+    float: left;
+    text-align: center;
+    border: 1px solid #48A3D0;
+    background: white;
+    margin-right: 7px;
+    cursor: pointer;
+    color: #48A3D0;
+    border-radius: 5px;
+}
+
+.pager:hover, .pager.current {
+    background: #48A3D0;
+    color: white;
+}
+
+.normal_btn, .red_btn {
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
