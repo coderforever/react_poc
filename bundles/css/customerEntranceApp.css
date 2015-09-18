@@ -1,0 +1,35 @@
+[class*="col-"] {
+    padding: 2px;
+}
+
+body {
+    background-color: wheat;
+}
+
+.my-profile {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #b0ed5d;
+    height: 100px;
+}
+
+.my-order {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #2bed59;
+    height: 100px;
+}
+
+.service {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #bfedeb;
+    height: 80px;
+}
+.module-name{
+    padding: 10px;
+    float: right;
+}

@@ -12,6 +12,11 @@ module.exports = {
             'webpack/hot/only-dev-server',
             './js/CustomerOrderDetailApp.js'
         ],
+        CustomerEntranceApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/CustomerEntranceApp.js'
+        ],
         NewOrderApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
