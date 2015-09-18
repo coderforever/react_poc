@@ -3,7 +3,11 @@
 }
 
 body {
-    background-color: wheat;
+    background-color: whitesmoke;
+}
+
+#entrance-wrapper {
+    margin-top: 100px;
 }
 
 .my-profile {
@@ -29,7 +33,8 @@ body {
     background-color: #bfedeb;
     height: 80px;
 }
-.module-name{
+
+.module-name {
     padding: 10px;
     float: right;
 }
