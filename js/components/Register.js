@@ -60,13 +60,6 @@ export default class CustomerLogin extends React.Component {
         return (
             <form onSubmit={this._registerUser.bind(this)}>
                 <Panel header={title} bsStyle='info'>
-                    <label className='radio-inline'>
-                        <input type='radio' value={UserConstants.CUSTOMER_ROLE} checked={this.state.userType==UserConstants.CUSTOMER_ROLE} onChange={this._userTypeChange.bind(this)}/> 我是买家
-                    </label>
-                    <label className='radio-inline'>
-                        <input type='radio' value={UserConstants.VENDER_ROLE} checked={this.state.userType==UserConstants.VENDER_ROLE} onChange={this._userTypeChange.bind(this)}/> 我是卖家
-                    </label>
-                    <br/>
                     <Input type='text' addonBefore={phoneIcon} placeholder='请输入手机号码' value={this.state.phone} className={this.state.phone_validate ? '' : 'error'} onChange={this._phoneInputChange.bind(this)}/>
                     <Input type='password' id='password1' addonBefore={passwordIcon} placeholder='请输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
                     <Input type='password' id='password2' addonBefore={passwordIcon} placeholder='请再次输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
