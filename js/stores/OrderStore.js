@@ -2,6 +2,7 @@ import AppDispatcher from '../dispatchers/AppDispatcher';
 import {EventEmitter} from 'events';
 import OrderConstants from '../constants/OrderConstants';
 import assign from 'object-assign';
+import $ from 'jquery';
 
 const CHANGE_EVENT='change';
 
@@ -33,12 +34,16 @@ let OrderStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
+    let order = action.actionData;
 
     switch(action.actionType) {
         case OrderConstants.CREATE_ORDER:
             console.log('Store: '+OrderConstants.CREATE_ORDER);
-            // TODO: insert data
-            OrderStore.emitChange();
+            let url='/user/order/place';
+            $.post(url, order, function(result){
+                OrderStore.emitChange(result.code, result.token);
+
+            })
             break;
 
         case OrderConstants.DELETE_ORDER:
