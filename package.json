@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "debug": "webpack --config webpack.config.js --colors --profile --display-modules --display-error-details && node hotServer.js",
-    "publish": "webpack --config publish.config.js && scp -r *.html bundles/ root@180.169.76.235:/home/developer/ootp/ootp-server/public/"
+    "publish": "webpack --config publish.config.js && scp -r *.html bundles/ root@180.169.76.235:/home/developer/www/"
   },
   "author": "frank & lingda",
   "license": "ISC",

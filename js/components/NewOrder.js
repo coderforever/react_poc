@@ -4,6 +4,7 @@ import OrderConstants from '../constants/OrderConstants';
 import UserConstants from '../constants/UserConstants';
 import $ from 'jquery';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import OrderStore from '../stores/OrderStore';
 import Codes from '../constants/Codes';
 
 export default class NewOrder extends React.Component {
@@ -104,6 +105,7 @@ export default class NewOrder extends React.Component {
     _venderChange(event, key) {
         let arr = key.split('#');
         this.setState({
+            serviceID:arr[1],
             venderID: arr[1],
             venderName: arr[0],
             venderID_validate: arr[1] != ''
