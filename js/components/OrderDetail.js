@@ -1,5 +1,4 @@
 import React from 'react';
-import { Router, Route, Link } from 'react-router';
 import OrderStore from '../stores/OrderStore';
 
 export default class OrderDetail extends React.Component {

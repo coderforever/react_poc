@@ -35,7 +35,7 @@ a{
 
 .menuItem, .menuItem:visited{
     float:left;
-    padding:18px 20px 16px 20px;
+    padding: 16px 18px 16px 18px;
     font-weight:bold;
     font-size:1.1em;
     cursor:pointer;
