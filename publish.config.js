@@ -1,26 +1,27 @@
 var webpack = require('webpack');
 
 module.exports = {
-	entry: {
+    entry: {
         VenderOrderListApp: './js/VenderOrderListApp.js',
         VenderOrderDetailApp: './js/VenderOrderDetailApp.js',
         CustomerOrderListApp: './js/CustomerOrderListApp.js',
         CustomerOrderDetailApp: './js/CustomerOrderDetailApp.js',
+        CustomerEntranceApp: './js/CustomerEntranceApp.js',
         NewOrderApp: './js/NewOrderApp.js',
         CustomerLoginApp: './js/CustomerLoginApp.js',
         VenderLoginApp: './js/VenderLoginApp.js',
         RegisterApp: './js/RegisterApp.js'
-	},
-	output: {
-		path: __dirname + '/bundles/',
-		filename: '[name].js'
-	},
-	resolve: {
-		extensions: ['', '.js', '.jsx']
-	},
-	module:{
-	    loaders: [
-	        {
+    },
+    output: {
+        path: __dirname + '/bundles/',
+        filename: '[name].js'
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    module: {
+        loaders: [
+            {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
@@ -31,9 +32,9 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
-	},
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
