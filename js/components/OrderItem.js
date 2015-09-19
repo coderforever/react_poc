@@ -9,7 +9,7 @@ export default class OrderList extends React.Component {
             <div className='orderItem' onClick={()=>this._linkToDetail(detailLink+'?id='+id)}>
                 <div className='orderItem_name'>{name}</div>
                 <div className='orderItem_description'>
-                    <table>
+                    <table cellspacing='10'>
                         <tr>
                             <th>创建时间：</th>
                             <td>{createTime}</td>
