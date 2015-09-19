@@ -1,17 +1,25 @@
 import AppDispatcher from '../dispatchers/AppDispatcher';
 import {EventEmitter} from 'events';
 import OrderConstants from '../constants/OrderConstants';
+import Codes from '../constants/Codes';
 import assign from 'object-assign';
+import $ from 'jquery';
 
 const CHANGE_EVENT='change';
 
 let OrderStore = assign({}, EventEmitter.prototype, {
     listOrders(role, page, size){
-        //TODO: list a page of items
+        let orders=[];
+        $.get('/'+role+'/orders?token='+localStorage['token'], function(data){
+            if(data.code==Codes.SUCCESS){
+                orders=data.orders;
+            }
+        });
+
         return {
             page: page,
-            count: 10,
-            data: [{id:1, name:'中文1', description:'asdfasdf'},{id:2, name:'订单名称', description:'asdfasdf'},{id:3, name:'test33', description:'asdfasdf'},{id:4, name:'test44', description:'asdfasdf'}]
+            count: 1,
+            data: orders
        };
     },
 
