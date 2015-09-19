@@ -29,16 +29,14 @@ export default class OrderList extends React.Component {
         let orderItems=[], role=this.props.role, store=OrderStore.listOrders(role, this.state.page, this.state.size), orderData=store.data, page=store.page, count=store.count;
 
         if(orderData.length==0){
-            orderItems.push(<div className='error orderItem'>订单详情页面的URL地址不正确！</div>)
+            orderItems.push(<div className='error orderItem'>没有订单数据</div>)
         }
         else{
             for(let i=0; i<orderData.length;i++){
                 let order=orderData[i];
-                orderItems.push(<OrderItem role={role} key={order.id} id={order.id} name={order.service} createTime={order.createTime} vender={order.vender} user={order.user}/>);
+                orderItems.push(<OrderItem role={role} key={order.id} id={order.id} name={order.service} createTime={order.createTime} vender={order.vender} user={order.user} status={order.process}/>);
             }
         }
-
-
 
         return (
             <div className='orderList'>

@@ -20,7 +20,7 @@ export default class NewOrder extends React.Component {
             orderDesc_validate: true,
             venderID_validate: true,
             serviceID_validate: true,
-            venderMenuItems: [<MenuItem eventKey='Test#1'>Test</MenuItem>]
+            venderMenuItems: []
         };
     }
 
@@ -30,8 +30,7 @@ export default class NewOrder extends React.Component {
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
                 for (let vender of result.venders) {
-                    this.state.venderMenuItems.push(<MenuItem
-                        eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
+                    this.state.venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
                 }
             }
         }.bind(this));
@@ -62,7 +61,6 @@ export default class NewOrder extends React.Component {
                               value={this.state.orderDescription} id='orderDesc_input'
                               className={this.state.orderDesc_validate ? '' : 'error'}
                               onChange={this._descInputChange.bind(this)}/><br/>
-
                     <div>
                         {venderSelector}
                         <button type='submit' id='create_submit' className='normal_btn'>确认创建</button>
@@ -81,7 +79,8 @@ export default class NewOrder extends React.Component {
             OrderActions.createOrder({
                 name: this.state.orderName,
                 remark: this.state.orderDescription,
-                serviceID: this.state.serviceID
+                serviceID: this.state.serviceID,
+                token: localStorage['token']
             });
         }
     }
@@ -112,13 +111,9 @@ export default class NewOrder extends React.Component {
         });
     }
 
-    _onCreateOrder(code, token) {
+    _onCreateOrder(code) {
         if (code == Codes.SUCCESS) {
-            localStorage['token'] = token;
-            alert('订单创建成功!');
-            location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role];
-        } else {
-            alert('订单创建失败!');
+            location.href = 'customerOrderList.html';
         }
     }
 }

@@ -2,17 +2,35 @@ import AppDispatcher from '../dispatchers/AppDispatcher';
 import {EventEmitter} from 'events';
 import OrderConstants from '../constants/OrderConstants';
 import Codes from '../constants/Codes';
+import UserConstants from '../constants/UserConstants';
 import assign from 'object-assign';
 import $ from 'jquery';
 
 const CHANGE_EVENT='change';
 
+function _redirectToLogin(role){
+    if(role==UserConstants.CUSTOMER_ROLE){
+        location.href='customerLogin.html';
+    }
+    else if(role==UserConstants.VENDER_ROLE){
+        location.href='venderLogin.html';
+    }
+}
+
 let OrderStore = assign({}, EventEmitter.prototype, {
     listOrders(role, page, size){
         let orders=[];
-        $.get('/'+role+'/orders?token='+localStorage['token'], function(data){
-            if(data.code==Codes.SUCCESS){
-                orders=data.orders;
+        $.ajax({
+            type: 'get',
+            url: '/'+role+'/orders?token='+localStorage['token'],
+            async: false,
+            success: function(data){
+                if(data.code==Codes.SUCCESS){
+                    orders=data.orders;
+                }
+                else if(data.code==Codes.USER_TOKEN_EXPIRE){
+                    _redirectToLogin(role);
+                }
             }
         });
 
@@ -48,9 +66,13 @@ AppDispatcher.register(function(action) {
             console.log('Store: '+OrderConstants.CREATE_ORDER);
             let url='/user/order/place';
             $.post(url, order, function(result){
-                OrderStore.emitChange(result.code, result.token);
-
-            })
+                if(result.code==Codes.USER_TOKEN_EXPIRE){
+                    _redirectToLogin(role);
+                }
+                else{
+                    OrderStore.emitChange(result.code);
+                }
+            });
             break;
 
         case OrderConstants.DELETE_ORDER:
