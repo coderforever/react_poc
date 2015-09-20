@@ -45,8 +45,8 @@ let OrderStore = assign({}, EventEmitter.prototype, {
         return {id:1, name:'订单名称订单名称', description:'订单描述信息'};
     },
 
-    emitChange() {
-        this.emit(CHANGE_EVENT);
+    emitChange(...events) {
+        this.emit(CHANGE_EVENT,...events);
     },
 
     addChangeListener(callback) {

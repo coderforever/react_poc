@@ -37,6 +37,10 @@ export default class NewOrder extends React.Component {
 
     }
 
+    componentWillUnmount() {
+        OrderStore.removeChangeListener(this._onCreateOrder.bind(this));
+    }
+
     render() {
         let venderSelector = '';
 
@@ -111,9 +115,10 @@ export default class NewOrder extends React.Component {
     }
 
     _onCreateOrder(code) {
+        console.log(`_onCreateOrder code : ${code}`);
         if (code == Codes.SUCCESS) {
             alert('订单创建成功!');
-            window.location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role];
+            window.location.href = UserConstants.LOGIN_SUCCESS_URL[UserConstants.CUSTOMER_ROLE];
         } else {
             alert('订单创建失败!');
         }
