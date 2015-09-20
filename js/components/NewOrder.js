@@ -11,12 +11,10 @@ export default class NewOrder extends React.Component {
     constructor() {
         super();
         this.state = {
-            orderName: '',
             orderDescription: '',
             venderID: '',
             venderName: '请选择商铺',
             serviceID: '',
-            orderName_validate: true,
             orderDesc_validate: true,
             venderID_validate: true,
             serviceID_validate: true,
@@ -55,11 +53,6 @@ export default class NewOrder extends React.Component {
         return (
             <div className='create_div'>
                 <form onSubmit={this._submitOrder.bind(this)}>
-                    <label htmlFor='orderName_input' className='submit_label'>订单名称: </label><br/>
-                    <input type='text' placeholder={'请输入订单名称（不超过'+OrderConstants.ORDER_NAME_LIMIT+'字）'}
-                           value={this.state.orderName} id='orderName_input'
-                           className={this.state.orderName_validate ? '' : 'error'}
-                           onChange={this._nameInputChange.bind(this)}/><br/>
                     <label htmlFor='orderDesc_input' className='submit_label'>描述信息: </label><br/>
                     <textarea placeholder={'请输入描述信息（不超过'+OrderConstants.ORDER_DESC_LIMIT+'字）'}
                               value={this.state.orderDescription} id='orderDesc_input'
@@ -79,21 +72,13 @@ export default class NewOrder extends React.Component {
         // prevent form submit by default
         event.preventDefault();
 
-        if (this.state.orderName_validate && this.state.orderDesc_validate && this.state.venderID_validate) {
+        if (this.state.orderDesc_validate && this.state.venderID_validate) {
             OrderActions.createOrder({
                 remark: this.state.orderDescription,
                 serviceID: this.state.serviceID,
                 token: localStorage['token']
             });
         }
-    }
-
-    _nameInputChange(event) {
-        let value = event.target.value;
-        this.setState({
-            orderName_validate: value.length <= OrderConstants.ORDER_NAME_LIMIT,
-            orderName: value
-        });
     }
 
     _descInputChange(event) {

@@ -34,7 +34,7 @@ export default class OrderList extends React.Component {
         else{
             for(let i=0; i<orderData.length;i++){
                 let order=orderData[i];
-                orderItems.push(<OrderItem role={role} key={order.id} id={order.id} name={order.service} createTime={order.createTime} vender={order.vender} user={order.user} status={order.process}/>);
+                orderItems.push(<OrderItem role={role} key={order.id} id={order.id} name={order.service} createTime={order.create_time} vender={order.vender} user={order.user} status={order.process}/>);
             }
         }
 

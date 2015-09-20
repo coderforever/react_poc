@@ -4,19 +4,36 @@ import OrderStore from '../stores/OrderStore';
 export default class OrderDetail extends React.Component {
 
     render() {
-        let search = location.search, regex = /^\?id=(\d+)$/, results = regex.exec(search);
+        let search = location.search, regex = /^\?id=(\d+)$/, results = regex.exec(search), role=this.props.role;
 
         if (results != null && results.length == 2) {
-            let order = OrderStore.getOrder(results[1]);
-
+            let order = OrderStore.getOrder(results[1], role);
+            let actions=order.actions;
+            let actionButtons=[];
+            for(let i=0;i<actions.length;i++){
+                actionButtons.push(<a className='normal_btn' onClick={()=>this._triggerAction(actions[i].id)} href='javascript:;'>{actions[i].name}</a>);
+            }
             return (
                 <div className='orderDetail'>
-                    <div className='orderTitle'>{order.name}</div>
-                    <div className='orderDesc'>{order.description}</div>
+                    <div className='orderTitle'>{order.service}</div>
+                    <div className='orderDesc'>
+                        <table cellspacing='10'>
+                            <tr>
+                                <th>创建时间：</th>
+                                <td>{order.create_time}</td>
+                            </tr>
+                            <tr>
+                                <th>状态：</th>
+                                <td>{order.process}</td>
+                            </tr>
+                            <tr>
+                                <th>{role==UserConstants.CUSTOMER_ROLE ? '供应商':'买家'}：</th>
+                                <td>{role==UserConstants.CUSTOMER_ROLE ? order.vender:order.user}</td>
+                            </tr>
+                        </table>
+                    </div>
                     <div className='orderAcceptOps'>
-                        <a className='normal_btn' onClick={()=>this._confirmOrder(id)} href='javascript:;'>确认完成</a>
-                        <a className='normal_btn' onClick={()=>this._completeOrder(id)} href='javascript:;'>完成订单</a>
-                        <a className='normal_btn' onClick={()=>this._acceptOrder(id)} href='javascript:;'>接受订单</a>
+                        {actionButtons}
                     </div>
                     <div className='orderDenialOps'>
                         <a className='red_btn' onClick={()=>this._deleteOrder(id)} href='javascript:;'>删除</a>
@@ -43,15 +60,7 @@ export default class OrderDetail extends React.Component {
         console.log('Reject order: ' + id);
     }
 
-    _confirmOrder(id) {
-        console.log('Confirm order: ' + id);
-    }
-
-    _completeOrder(id) {
-        console.log('Complete order: ' + id);
-    }
-
-    _acceptOrder(id) {
-        console.log('Accept order: ' + id);
+    _triggerAction(action_id){
+        console.log('Action: '+action_id);
     }
 }

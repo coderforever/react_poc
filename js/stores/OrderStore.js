@@ -41,8 +41,22 @@ let OrderStore = assign({}, EventEmitter.prototype, {
        };
     },
 
-    getOrder(id){
-        return {id:1, name:'订单名称订单名称', description:'订单描述信息'};
+    getOrder(id, role){
+        let order=null;
+        $.ajax({
+            type: 'get',
+            url: '/'+role+'/order/query?token='+localStorage['token']+'&orderID='+id,
+            async: false,
+            success: function(data){
+                if(data.code==Codes.SUCCESS){
+                    order=data.order;
+                }
+                else if(data.code==Codes.USER_TOKEN_EXPIRE){
+                    _redirectToLogin(role);
+                }
+            }
+        });
+        return order;
     },
 
     emitChange(...events) {
