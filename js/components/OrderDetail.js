@@ -1,5 +1,6 @@
 import React from 'react';
 import OrderStore from '../stores/OrderStore';
+import UserConstants from '../constants/UserConstants';
 
 export default class OrderDetail extends React.Component {
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import OrderActions from '../actions/OrderActions';
 import UserConstants from '../constants/UserConstants';
 
 export default class OrderList extends React.Component {
