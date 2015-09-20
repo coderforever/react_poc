@@ -77,7 +77,6 @@ export default class NewOrder extends React.Component {
 
         if (this.state.orderName_validate && this.state.orderDesc_validate && this.state.venderID_validate) {
             OrderActions.createOrder({
-                name: this.state.orderName,
                 remark: this.state.orderDescription,
                 serviceID: this.state.serviceID,
                 token: localStorage['token']
@@ -104,7 +103,7 @@ export default class NewOrder extends React.Component {
     _venderChange(event, key) {
         let arr = key.split('#');
         this.setState({
-            serviceID:arr[1],
+            serviceID:5,
             venderID: arr[1],
             venderName: arr[0],
             venderID_validate: arr[1] != ''
@@ -113,7 +112,10 @@ export default class NewOrder extends React.Component {
 
     _onCreateOrder(code) {
         if (code == Codes.SUCCESS) {
-            location.href = 'customerOrderList.html';
+            alert('订单创建成功!');
+            window.location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role];
+        } else {
+            alert('订单创建失败!');
         }
     }
 }
