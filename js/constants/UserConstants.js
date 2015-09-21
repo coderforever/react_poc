@@ -1,6 +1,7 @@
 let UserConstants={
     CUSTOMER_ROLE: 'user',
     VENDER_ROLE: 'vender',
+    SYSADMIN_ROLE: 'sysadmin',
     ADMIN_ROLE: 'admin',
     LOGIN: 'login',
     ADDRESS_LENGTH_LIMIT: 30,
