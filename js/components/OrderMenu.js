@@ -7,7 +7,7 @@ export default class OrderMenu extends React.Component {
         let currentIndex=this.props.currentIndex;
 
         return (
-            <div className='orderMenuBar'>
+            <div className='menuBar'>
                 <div className='menuGroup'>
                     <a className={'menuItem'+(currentIndex=='0'?' current':'')} href={ this.props.role==UserConstants.CUSTOMER_ROLE ? '/customerOrderList.html' : '/venderOrderList.html' }>订单管理</a>
                     { this.props.role==UserConstants.CUSTOMER_ROLE ? (<a className={'menuItem'+(currentIndex=='1'?' current':'')} href='/newOrder.html'>创建订单</a>) : '' }

@@ -15,12 +15,25 @@ export default class ManageVender extends React.Component {
         super();
         this.state = {
             userType: UserConstants.SYSADMIN_ROLE,
-            venders: []
+            venders: [{
+                vender_id: 1,
+                vender_name: 'Apple',
+                vender_address: 'San Francisco'
+            }, {
+                vender_id: 2,
+                vender_name: 'Google',
+                vender_address: 'Seattle'
+            }, {
+                vender_id: 3,
+                vender_name: 'Microsoft',
+                vender_address: 'Los Angeles'
+            }]
         };
     }
 
     componentDidMount() {
         UserStore.addChangeListener(this._onRegister.bind(this));
+
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
                 this.state.venders.push(result.venders);
@@ -34,22 +47,7 @@ export default class ManageVender extends React.Component {
 
     render() {
 
-        let modalTmpl = new ModalTmpl();
-
-        let venders = [{
-            vender_id: 1,
-            vender_name: 'Apple',
-            vender_address: 'San Francisco'
-        }, {
-            vender_id: 2,
-            vender_name: 'Google',
-            vender_address: 'Seattle'
-        }, {
-            vender_id: 3,
-            vender_name: 'Microsoft',
-            vender_address: 'Los Angeles'
-        }]
-
+        let venders = this.state.venders;
         return (
             <Grid>
                 <BootstrapTable data={venders} pagination={true} striped={true} hover={true}>
@@ -64,12 +62,8 @@ export default class ManageVender extends React.Component {
         );
     }
 
-    _showModal(){
-        React.render(<ModalTmpl title='新增商户' />, document.getElementById('modal_section'));
-    }
-
-    _registerVender() {
-
+    _showModal() {
+        React.render(<ModalTmpl title='新增商户'/>, document.getElementById('modal_section'));
     }
 
     _onRegister() {
