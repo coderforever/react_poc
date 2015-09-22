@@ -4,6 +4,7 @@
 import React from 'react';
 import UserConstants from '../constants/UserConstants';
 import ServiceStore from '../stores/ServiceStore';
+import Codes from '../constants/Codes';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Col, Grid, Row, Glyphicon, Button } from 'react-bootstrap';
 import $ from 'jquery';
@@ -41,8 +42,8 @@ export default class ManageService extends React.Component {
         let operation = function (cell, row) {
             return '<Button bsStyle="danger">删除</Button> ';
         }
-
         return (
+
             <Grid>
                 <BootstrapTable data={services} pagination={true} striped={true} hover={true}>
                     <TableHeaderColumn dataField="id" isKey={true} hidden>ID</TableHeaderColumn>
