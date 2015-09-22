@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import {Modal, Button, Input} from 'react-bootstrap';
-import UserStore from '../stores/UserStore';
+import UserActions from '../actions/UserActions';
+import UserConstants from '../constants/UserConstants';
 
 export default class ModalTmpl extends React.Component {
     constructor() {
@@ -84,8 +85,8 @@ export default class ModalTmpl extends React.Component {
             return;
         }
 
-        console.log(`${venderName} , ${venderAddress} , ${venderService}`);
-        UserStore.register({
+        console.log(`${name}, ${password}, ${venderName} , ${venderAddress} , ${venderService}`);
+        UserActions.register({
             name: name,
             password: password,
             address: venderAddress,
@@ -93,9 +94,6 @@ export default class ModalTmpl extends React.Component {
             userType: UserConstants.VENDER_ROLE
         });
 
-        React.findDOMNode(this.refs.venderName).value = '';
-        React.findDOMNode(this.refs.venderAddress).value = '';
-        React.findDOMNode(this.refs.venderService).value = '';
         return;
     }
 

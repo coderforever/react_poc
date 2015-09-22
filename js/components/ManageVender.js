@@ -37,7 +37,9 @@ export default class ManageVender extends React.Component {
 
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
-                this.state.venders = result.venders;
+                this.setState({
+                    venders : result.venders
+                })
             }
         }.bind(this));
     }
