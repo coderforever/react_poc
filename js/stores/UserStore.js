@@ -22,24 +22,31 @@ let UserStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (action) {
-    let user = action.actionData, role, url;
+    let data = action.actionData, role, url;
 
     switch (action.actionType) {
         case UserConstants.LOGIN:
-            role = user.role;
+            role = data.role;
             url = '/login/' + role;
-            $.post(url, user, function (result) {
+            $.post(url, data, function (result) {
                 UserStore.emitChange(result.code, result.token);
             });
             break;
 
         case UserConstants.REGISTER:
-            role = user.userType;
+            role = data.userType;
             url = '/register/user';
             if (role == UserConstants.VENDER_ROLE) {
                 url = '/admin/register/vender';
             }
-            $.post(url, user, function (result) {
+            $.post(url, data, function (result) {
+                UserStore.emitChange(result.code);
+            });
+            break;
+
+        case UserConstants.ADD_VENDER:
+            url = '/admin/vender/add';
+            $.post(url, data, function (result) {
                 UserStore.emitChange(result.code);
             });
             break;

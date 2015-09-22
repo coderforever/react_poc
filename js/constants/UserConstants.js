@@ -4,6 +4,7 @@ let UserConstants={
     SYSADMIN_ROLE: 'sysadmin',
     ADMIN_ROLE: 'admin',
     LOGIN: 'login',
+    ADD_VENDER:'add_vender',
     ADDRESS_LENGTH_LIMIT: 30,
     REGISTER: 'register',
     CUSTOMER_LOGIN_URL: 'customerLogin.html',

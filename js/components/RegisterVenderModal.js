@@ -6,7 +6,7 @@ import {Modal, Button, Input} from 'react-bootstrap';
 import UserActions from '../actions/UserActions';
 import UserConstants from '../constants/UserConstants';
 
-export default class ModalTmpl extends React.Component {
+export default class RegisterVenderModal extends React.Component {
     constructor() {
         super();
         this._handleSubmit = this._handleSubmit.bind(this);
@@ -14,10 +14,7 @@ export default class ModalTmpl extends React.Component {
             showModal: false,
             name:'',
             password:'',
-            venderId:'',
-            venderName: '',
-            venderAddress: '',
-            venderService: ''
+            venderId:''
         }
     }
 
@@ -47,22 +44,6 @@ export default class ModalTmpl extends React.Component {
 
                             <input type='text' className='form-control' placeholder='请输入密码' ref='password'/>
 
-                            <h4>商户名称</h4>
-
-                            <input type='text' className='form-control' placeholder='请输入商户名称' ref='venderName'/>
-
-                            <h4>商户地址</h4>
-
-                            <input type="text" className='form-control' placeholder="请输入商户地址" ref='venderAddress'/>
-
-                            <h4>经营范围</h4>
-
-                            <select className='form-control' ref='venderService'>
-                                <option value='mobile'>手机</option>
-                                <option value='car'>汽车</option>
-                            </select>
-
-
                         </Modal.Body>
                         <Modal.Footer>
                             <Button bsStyle="success" type='submit'>注册</Button>
@@ -78,18 +59,14 @@ export default class ModalTmpl extends React.Component {
         e.preventDefault();
         var name = React.findDOMNode(this.refs.name).value.trim();
         var password = React.findDOMNode(this.refs.password).value.trim();
-        var venderName = React.findDOMNode(this.refs.venderName).value.trim();
-        var venderAddress = React.findDOMNode(this.refs.venderAddress).value.trim();
-        var venderService = React.findDOMNode(this.refs.venderService).value.trim();
-        if (!name || !password || !venderName || !venderAddress || !venderService) {
+        if (!name || !password) {
             return;
         }
 
-        console.log(`${name}, ${password}, ${venderName} , ${venderAddress} , ${venderService}`);
+        console.log(`${name}, ${password}`);
         UserActions.register({
             name: name,
             password: password,
-            address: venderAddress,
             venderID: '',
             userType: UserConstants.VENDER_ROLE
         });

@@ -17,6 +17,14 @@ let UserActions = {
             actionType: UserConstants.REGISTER,
             actionData: user
         });
+    },
+
+    addVender(vender){
+        console.log('Action : add vender');
+        AppDispatcher.dispatch({
+            actionType:UserConstants.ADD_VENDER,
+            actionData:vender
+        });
     }
 }
 

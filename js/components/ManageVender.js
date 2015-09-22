@@ -8,7 +8,8 @@ import Codes from '../constants/Codes';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Col, Grid, Row, Glyphicon, Button } from 'react-bootstrap';
 import $ from 'jquery';
-import ModalTmpl from './ModalTmpl';
+import AdminVenderModal from './AdminVenderModal';
+import RegisterVenderModal from './RegisterVenderModal';
 
 export default class ManageVender extends React.Component {
 
@@ -61,24 +62,29 @@ export default class ManageVender extends React.Component {
                     <TableHeaderColumn dataField="address">商家地址</TableHeaderColumn>
                     <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
-                <Button bsStyle="success" className="pull-right" onClick={this._showModal.bind(this)}>注册商户</Button>
+                <Button bsStyle="primary" className="pull-right" onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
+                <Button bsStyle="success" className="pull-right" onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
 
             </Grid>
 
         );
     }
 
-    _showModal() {
-        React.render(<ModalTmpl title='新增商户'/>, document.getElementById('modal_section'));
+    _showAddVenderModal() {
+        React.render(<AdminVenderModal title='添加商户'/>, document.getElementById('modal_section'));
+    }
+
+    _showRegisterVenderAdminModal() {
+        React.render(<RegisterVenderModal title='注册商户管理员'/>, document.getElementById('modal_section'));
     }
 
     _onRegister(code) {
         console.log(`code : ${code}`);
         if (code == Codes.SUCCESS) {
-            alert('注册成功');
+            alert('成功');
             window.location.href = 'manageVender.html';
         } else {
-            alert('注册失败');
+            alert('失败');
         }
 
     }
