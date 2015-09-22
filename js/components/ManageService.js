@@ -42,7 +42,7 @@ export default class ManageService extends React.Component {
 
         let services = this.state.services;
         let operation = function (cell, row){
-            return '<Button bsStyle="warning"></Button> ';
+            return '<Button bsStyle="danger">删除</Button> ';
         }
 
         return (

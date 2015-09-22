@@ -11,6 +11,9 @@ export default class ModalTmpl extends React.Component {
         this._handleSubmit = this._handleSubmit.bind(this);
         this.state = {
             showModal: false,
+            name:'',
+            password:'',
+            venderId:'',
             venderName: '',
             venderAddress: '',
             venderService: ''
@@ -35,6 +38,14 @@ export default class ModalTmpl extends React.Component {
 
                     <form onSubmit={this._handleSubmit}>
                         <Modal.Body>
+                            <h4>用户名</h4>
+
+                            <input type='text' className='form-control' placeholder='请输入用户名' ref='name'/>
+
+                            <h4>密码</h4>
+
+                            <input type='text' className='form-control' placeholder='请输入密码' ref='password'/>
+
                             <h4>商户名称</h4>
 
                             <input type='text' className='form-control' placeholder='请输入商户名称' ref='venderName'/>
@@ -64,14 +75,24 @@ export default class ModalTmpl extends React.Component {
 
     _handleSubmit(e) {
         e.preventDefault();
+        var name = React.findDOMNode(this.refs.name).value.trim();
+        var password = React.findDOMNode(this.refs.password).value.trim();
         var venderName = React.findDOMNode(this.refs.venderName).value.trim();
         var venderAddress = React.findDOMNode(this.refs.venderAddress).value.trim();
-        var venderService= React.findDOMNode(this.refs.venderService).value.trim();
-        if (!venderName || !venderAddress ||!venderService) {
+        var venderService = React.findDOMNode(this.refs.venderService).value.trim();
+        if (!name || !password || !venderName || !venderAddress || !venderService) {
             return;
         }
-        // TODO: send request to the server
+
         console.log(`${venderName} , ${venderAddress} , ${venderService}`);
+        UserStore.register({
+            name: name,
+            password: password,
+            address: venderAddress,
+            venderID: '',
+            userType: UserConstants.VENDER_ROLE
+        });
+
         React.findDOMNode(this.refs.venderName).value = '';
         React.findDOMNode(this.refs.venderAddress).value = '';
         React.findDOMNode(this.refs.venderService).value = '';

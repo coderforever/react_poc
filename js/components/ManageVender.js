@@ -4,6 +4,7 @@
 import React from 'react';
 import UserConstants from '../constants/UserConstants';
 import UserStore from '../stores/UserStore';
+import Codes from '../constants/Codes';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Col, Grid, Row, Glyphicon, Button } from 'react-bootstrap';
 import $ from 'jquery';
@@ -16,17 +17,17 @@ export default class ManageVender extends React.Component {
         this.state = {
             userType: UserConstants.SYSADMIN_ROLE,
             venders: [{
-                vender_id: 1,
-                vender_name: 'Apple',
-                vender_address: 'San Francisco'
+                id: 1,
+                name: 'Apple',
+                address: 'San Francisco'
             }, {
-                vender_id: 2,
-                vender_name: 'Google',
-                vender_address: 'Seattle'
+                id: 2,
+                name: 'Google',
+                address: 'Seattle'
             }, {
-                vender_id: 3,
-                vender_name: 'Microsoft',
-                vender_address: 'Los Angeles'
+                id: 3,
+                name: 'Microsoft',
+                address: 'Los Angeles'
             }]
         };
     }
@@ -36,7 +37,7 @@ export default class ManageVender extends React.Component {
 
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
-                this.state.venders.push(result.venders);
+                this.state.venders = result.venders;
             }
         }.bind(this));
     }
@@ -46,14 +47,17 @@ export default class ManageVender extends React.Component {
     }
 
     render() {
-
         let venders = this.state.venders;
+        let operation = function (cell, row) {
+            return '<Button bsStyle="danger">删除</Button> ';
+        }
         return (
             <Grid>
                 <BootstrapTable data={venders} pagination={true} striped={true} hover={true}>
-                    <TableHeaderColumn dataField="vender_id" isKey={true}>商家ID</TableHeaderColumn>
-                    <TableHeaderColumn dataField="vender_name">商家名称</TableHeaderColumn>
-                    <TableHeaderColumn dataField="vender_address">商家地址</TableHeaderColumn>
+                    <TableHeaderColumn dataField="id" isKey={true} hidden>商家ID</TableHeaderColumn>
+                    <TableHeaderColumn dataField="name">商家名称</TableHeaderColumn>
+                    <TableHeaderColumn dataField="address">商家地址</TableHeaderColumn>
+                    <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
                 <Button bsStyle="success" className="pull-right" onClick={this._showModal.bind(this)}>注册商户</Button>
 
@@ -66,7 +70,14 @@ export default class ManageVender extends React.Component {
         React.render(<ModalTmpl title='新增商户'/>, document.getElementById('modal_section'));
     }
 
-    _onRegister() {
+    _onRegister(code) {
+        console.log(`code : ${code}`);
+        if (code == Codes.SUCCESS) {
+            alert('注册成功');
+            window.location.href = 'manageVender.html';
+        } else {
+            alert('注册失败');
+        }
 
     }
 
