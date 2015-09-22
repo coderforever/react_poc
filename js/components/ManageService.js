@@ -41,13 +41,16 @@ export default class ManageService extends React.Component {
     render() {
 
         let services = this.state.services;
+        let operation = function (cell, row){
+            return '<Button bsStyle="warning"></Button> ';
+        }
 
         return (
             <Grid>
                 <BootstrapTable data={services} pagination={true} striped={true} hover={true} >
                     <TableHeaderColumn dataField="service_id" isKey={true}>服务ID</TableHeaderColumn>
                     <TableHeaderColumn dataField="service_name">服务名称</TableHeaderColumn>
-                    <TableHeaderColumn>服务地址</TableHeaderColumn>
+                    <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
                 <Button bsStyle="success" className="pull-right" onClick={this._showModal.bind(this)}>添加服务</Button>
 
