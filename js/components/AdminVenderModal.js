@@ -60,7 +60,7 @@ export default class AdminVenderModal extends React.Component {
 
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button bsStyle="success" type='submit'>注册</Button>
+                            <Button bsStyle="success" type='submit'>添加</Button>
                             <Button onClick={this._close.bind(this)}>关闭</Button>
                         </Modal.Footer>
                     </form>

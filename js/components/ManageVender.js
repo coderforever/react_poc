@@ -62,8 +62,8 @@ export default class ManageVender extends React.Component {
                     <TableHeaderColumn dataField="address">商家地址</TableHeaderColumn>
                     <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
-                <Button bsStyle="primary" className="pull-right" onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
-                <Button bsStyle="success" className="pull-right" onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
+                <Button bsStyle="primary" className="menu-oper pull-right" onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
+                <Button bsStyle="success" className="menu-oper pull-right" onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
 
             </Grid>
 

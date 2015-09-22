@@ -1,8 +1,7 @@
 import AppDispatcher from '../dispatchers/AppDispatcher';
 import {EventEmitter} from 'events';
 import Codes from '../constants/Codes';
-import UserConstants from '../constants/UserConstants';
-import ServiceConstants from '../constants/OrderConstants';
+import ServiceConstants from '../constants/ServiceConstants';
 import assign from 'object-assign';
 import $ from 'jquery';
 
@@ -26,16 +25,16 @@ AppDispatcher.register(function (action) {
     let service = action.actionData;
 
     switch (action.actionType) {
-        case ServiceConstants.CREATE_ORDER:
-            console.log('Store: ' + ServiceConstants.CREATE_ORDER);
-            let url = '/service/add';
+        case ServiceConstants.CREATE_SERVICE:
+            console.log('Store: ' + ServiceConstants.CREATE_SERVICE);
+            let url = '/admin/service/add';
             $.post(url, service, function (result) {
                 ServiceStore.emitChange(result.code);
             });
             break;
 
-        case ServiceConstants.DELETE_ORDER:
-            console.log('Store: ' + ServiceConstants.DELETE_ORDER);
+        case ServiceConstants.DELETE_SERVICE:
+            console.log('Store: ' + ServiceConstants.DELETE_SERVICE);
             // TODO: delete data
             ServiceStore.emitChange();
             break;

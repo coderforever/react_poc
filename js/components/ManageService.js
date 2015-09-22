@@ -7,6 +7,7 @@ import ServiceStore from '../stores/ServiceStore';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Col, Grid, Row, Glyphicon, Button } from 'react-bootstrap';
 import $ from 'jquery';
+import AdminServiceModal from './AdminServiceModal';
 
 export default class ManageService extends React.Component {
 
@@ -14,13 +15,7 @@ export default class ManageService extends React.Component {
         super();
         this.state = {
             userType: UserConstants.SYSADMIN_ROLE,
-            services: [{
-                service_id: 1,
-                service_name: 'mobile'
-            }, {
-                service_id: 2,
-                service_name: 'car',
-            }]
+            services: []
         };
     }
 
@@ -29,7 +24,9 @@ export default class ManageService extends React.Component {
 
         $.get('/services', function (result) {
             if (result.code == Codes.SUCCESS) {
-                this.state.services.push(result.services);
+                this.setState({
+                    services: result.services
+                });
             }
         }.bind(this));
     }
@@ -41,15 +38,17 @@ export default class ManageService extends React.Component {
     render() {
 
         let services = this.state.services;
-        let operation = function (cell, row){
+        let operation = function (cell, row) {
             return '<Button bsStyle="danger">删除</Button> ';
         }
 
         return (
             <Grid>
-                <BootstrapTable data={services} pagination={true} striped={true} hover={true} >
-                    <TableHeaderColumn dataField="service_id" isKey={true}>服务ID</TableHeaderColumn>
-                    <TableHeaderColumn dataField="service_name">服务名称</TableHeaderColumn>
+                <BootstrapTable data={services} pagination={true} striped={true} hover={true}>
+                    <TableHeaderColumn dataField="id" isKey={true} hidden>ID</TableHeaderColumn>
+                    <TableHeaderColumn dataField="name">名称</TableHeaderColumn>
+                    <TableHeaderColumn dataField="description">描述</TableHeaderColumn>
+                    <TableHeaderColumn dataField="category">类别</TableHeaderColumn>
                     <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
                 <Button bsStyle="success" className="pull-right" onClick={this._showModal.bind(this)}>添加服务</Button>
@@ -60,11 +59,17 @@ export default class ManageService extends React.Component {
     }
 
     _showModal() {
-        React.render(<ModalTmpl title='新增服务'/>, document.getElementById('modal_section'));
+        React.render(<AdminServiceModal title='新增服务'/>, document.getElementById('modal_section'));
     }
 
     _onAddService(code) {
-        console.log(code);
+        console.log(`code : ${code}`);
+        if (code == Codes.SUCCESS) {
+            alert('成功');
+            window.location.href = 'manageService.html';
+        } else {
+            alert('失败');
+        }
     }
 
 }
