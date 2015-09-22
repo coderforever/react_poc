@@ -10,7 +10,8 @@ module.exports = {
         NewOrderApp: './js/NewOrderApp.js',
         CustomerLoginApp: './js/CustomerLoginApp.js',
         VenderLoginApp: './js/VenderLoginApp.js',
-        RegisterApp: './js/RegisterApp.js'
+        RegisterApp: './js/RegisterApp.js',
+        SystemAdminApp: './js/SystemAdminApp.js'
     },
     output: {
         path: __dirname + '/bundles/',
