@@ -10,11 +10,11 @@ let OrderActions = {
         });
     },
 
-    deleteOrder(id){
-        console.log('Action: delete');
+    updateOrder(param){
+        console.log('Action: update');
         AppDispatcher.dispatch({
-            actionType: OrderConstants.DELETE_ORDER,
-            actionData: id
+            actionType: OrderConstants.UPDATE_ORDER,
+            actionData: param
         });
     }
 }

@@ -73,13 +73,13 @@ let OrderStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-    let order = action.actionData;
+    let actionData = action.actionData, url;
 
     switch(action.actionType) {
         case OrderConstants.CREATE_ORDER:
             console.log('Store: '+OrderConstants.CREATE_ORDER);
-            let url='/user/order/place';
-            $.post(url, order, function(result){
+            url='/user/order/place';
+            $.post(url, actionData, function(result){
                 if(result.code==Codes.USER_TOKEN_EXPIRE){
                     _redirectToLogin(role);
                 }
@@ -89,10 +89,17 @@ AppDispatcher.register(function(action) {
             });
             break;
 
-        case OrderConstants.DELETE_ORDER:
-            console.log('Store: '+OrderConstants.DELETE_ORDER);
-            // TODO: delete data
-            OrderStore.emitChange();
+        case OrderConstants.UPDATE_ORDER:
+            console.log('Store: '+OrderConstants.UPDATE_ORDER);
+            url='/'+actionData.role+'/order/update';
+            $.post(url, actionData, function(result){
+                if(result.code==Codes.USER_TOKEN_EXPIRE){
+                    _redirectToLogin(role);
+                }
+                else{
+                    OrderStore.emitChange(result.code);
+                }
+            });
             break;
 
         default:

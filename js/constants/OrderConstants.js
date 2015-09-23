@@ -4,7 +4,7 @@ let OrderConstants={
     PAGE_SIZE: 5,
     PAGER_SIZE: 5,
     CREATE_ORDER: 'createOrder',
-    DELETE_ORDER: 'deleteOrder',
+    UPDATE_ORDER: 'updateOrder',
     ORDER_NAME_LIMIT: 30,
     ORDER_DESC_LIMIT: 200
 };

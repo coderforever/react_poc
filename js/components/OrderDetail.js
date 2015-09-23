@@ -1,8 +1,18 @@
 import React from 'react';
 import OrderStore from '../stores/OrderStore';
 import UserConstants from '../constants/UserConstants';
+import OrderActions from '../actions/OrderActions';
+import Codes from '../constants/Codes';
 
 export default class OrderDetail extends React.Component {
+
+    componentDidMount() {
+        OrderStore.addChangeListener(this._onUpdate.bind(this));
+    }
+
+    componentWillUnmount() {
+        OrderStore.removeChangeListener(this._onUpdate.bind(this));
+    }
 
     render() {
         let search = location.search, regex = /^\?id=(\d+)$/, results = regex.exec(search), role=this.props.role;
@@ -12,7 +22,7 @@ export default class OrderDetail extends React.Component {
             let actions=order.actions;
             let actionButtons=[];
             for(let i=0;i<actions.length;i++){
-                actionButtons.push(<a className='normal_btn' onClick={()=>this._triggerAction(actions[i].id)} href='javascript:;'>{actions[i].name}</a>);
+                actionButtons.push(<a className='normal_btn' onClick={()=>this._triggerAction(results[1], actions[i].id, role)} href='javascript:;'>{actions[i].name}</a>);
             }
             return (
                 <div className='orderDetail'>
@@ -36,10 +46,6 @@ export default class OrderDetail extends React.Component {
                     <div className='orderAcceptOps'>
                         {actionButtons}
                     </div>
-                    <div className='orderDenialOps'>
-                        <a className='red_btn' onClick={()=>this._deleteOrder(id)} href='javascript:;'>删除</a>
-                        <a className='red_btn' onClick={()=>this._rejectOrder(id)} href='javascript:;'>拒绝订单</a>
-                    </div>
                 </div>
             );
         }
@@ -52,16 +58,21 @@ export default class OrderDetail extends React.Component {
         }
     }
 
-    _deleteOrder(id) {
-        console.log('Delete order: ' + id);
-        OrderActions.deleteOrder(id);
+    _triggerAction(orderID, actionID, role){
+        OrderActions.updateOrder({
+            orderID: orderID,
+            actionID: actionID,
+            token: localStorage['token'],
+            role: role
+        });
     }
 
-    _rejectOrder(id) {
-        console.log('Reject order: ' + id);
-    }
-
-    _triggerAction(action_id){
-        console.log('Action: '+action_id);
+    _onUpdate(code) {
+        if (code == Codes.SUCCESS) {
+            alert('订单操作成功!');
+            window.location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role];
+        } else {
+            alert('订单操作失败!');
+        }
     }
 }
