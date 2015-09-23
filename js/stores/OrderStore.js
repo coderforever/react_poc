@@ -28,7 +28,7 @@ let OrderStore = assign({}, EventEmitter.prototype, {
                 if(data.code==Codes.SUCCESS){
                     orders=data.orders;
                 }
-                else if(data.code==Codes.USER_TOKEN_EXPIRE){
+                else if(data.code.indexOf("_TOKEN_")!=-1){
                     _redirectToLogin(role);
                 }
             }
@@ -51,7 +51,7 @@ let OrderStore = assign({}, EventEmitter.prototype, {
                 if(data.code==Codes.SUCCESS){
                     order=data.order;
                 }
-                else if(data.code==Codes.USER_TOKEN_EXPIRE){
+                else if(data.code.indexOf("_TOKEN_")!=-1){
                     _redirectToLogin(role);
                 }
             }
@@ -80,7 +80,7 @@ AppDispatcher.register(function(action) {
             console.log('Store: '+OrderConstants.CREATE_ORDER);
             url='/user/order/place';
             $.post(url, actionData, function(result){
-                if(result.code==Codes.USER_TOKEN_EXPIRE){
+                if(result.code.indexOf("_TOKEN_")!=-1){
                     _redirectToLogin(role);
                 }
                 else{
@@ -93,7 +93,7 @@ AppDispatcher.register(function(action) {
             console.log('Store: '+OrderConstants.UPDATE_ORDER);
             url='/'+actionData.role+'/order/update';
             $.post(url, actionData, function(result){
-                if(result.code==Codes.USER_TOKEN_EXPIRE){
+                if(result.code.indexOf("_TOKEN_")!=-1){
                     _redirectToLogin(role);
                 }
                 else{
