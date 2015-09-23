@@ -14,22 +14,46 @@ export default class NewOrder extends React.Component {
             orderDescription: '',
             venderID: '',
             venderName: '请选择商铺',
+            serviceName: '请选择服务',
             serviceID: '',
             orderDesc_validate: true,
             venderID_validate: true,
             serviceID_validate: true,
-            venderMenuItems: []
+            venderMenuItems: [{
+                id: 1,
+                name: 'bcd'
+            }],
+            serviceMenuItems: [{
+                id: 1,
+                name: 'abc'
+            }]
         };
     }
 
     componentDidMount() {
         OrderStore.addChangeListener(this._onCreateOrder.bind(this));
 
+        let venderMenuItems = [];
+        let serviceMenuItems = [];
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
                 for (let vender of result.venders) {
-                    this.state.venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
+                    venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
                 }
+                this.setState({
+                    venderMenuItems: venderMenuItems
+                });
+            }
+        }.bind(this));
+
+        $.get('/services', function (result) {
+            if (result.code == Codes.SUCCESS) {
+                for (let service of result.services) {
+                    serviceMenuItems.push(<MenuItem eventKey={service.name+'#'+service.id}>{service.name}</MenuItem>);
+                }
+                this.setState({
+                    serviceMenuItems: serviceMenuItems
+                });
             }
         }.bind(this));
 
@@ -41,12 +65,22 @@ export default class NewOrder extends React.Component {
 
     render() {
         let venderSelector = '';
+        let serviceSelector = '';
 
         if (this.state.venderMenuItems.length > 0) {
             venderSelector = (
-                <DropdownButton bsStyle={this.state.venderID_validate ? 'default':'danger'}
+                <DropdownButton id='venderSelector' bsStyle={this.state.venderID_validate ? 'default':'danger'}
                                 title={this.state.venderName} onSelect={this._venderChange.bind(this)}>
                     {this.state.venderMenuItems}
+                </DropdownButton>
+            );
+        }
+
+        if (this.state.serviceMenuItems.length > 0) {
+            serviceSelector = (
+                <DropdownButton id='serviceSelector' bsStyle={this.state.serviceID_validate ? 'default':'danger'}
+                                title={this.state.serviceName} onSelect={this._serviceChange.bind(this)}>
+                    {this.state.serviceMenuItems}
                 </DropdownButton>
             );
         }
@@ -58,8 +92,10 @@ export default class NewOrder extends React.Component {
                               value={this.state.orderDescription} id='orderDesc_input'
                               className={this.state.orderDesc_validate ? '' : 'error'}
                               onChange={this._descInputChange.bind(this)}/><br/>
+
                     <div>
                         {venderSelector}
+                        {serviceSelector}
                         <button type='submit' id='create_submit' className='normal_btn'>确认创建</button>
                     </div>
                 </form>
@@ -72,7 +108,7 @@ export default class NewOrder extends React.Component {
         // prevent form submit by default
         event.preventDefault();
 
-        if (this.state.orderDesc_validate && this.state.venderID_validate) {
+        if (this.state.orderDesc_validate && this.state.venderID_validate && this.state.serviceID_validate) {
             OrderActions.createOrder({
                 remark: this.state.orderDescription,
                 serviceID: this.state.serviceID,
@@ -92,10 +128,18 @@ export default class NewOrder extends React.Component {
     _venderChange(event, key) {
         let arr = key.split('#');
         this.setState({
-            serviceID:5,
             venderID: arr[1],
             venderName: arr[0],
             venderID_validate: arr[1] != ''
+        });
+    }
+
+    _serviceChange(event, key) {
+        let arr = key.split('#');
+        this.setState({
+            serviceID: arr[1],
+            serviceName: arr[0],
+            serviceID_validate: arr[1] != ''
         });
     }
 
