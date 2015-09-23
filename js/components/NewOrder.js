@@ -94,7 +94,6 @@ export default class NewOrder extends React.Component {
                               onChange={this._descInputChange.bind(this)}/><br/>
 
                     <div>
-                        {venderSelector}
                         {serviceSelector}
                         <button type='submit' id='create_submit' className='normal_btn'>确认创建</button>
                     </div>
