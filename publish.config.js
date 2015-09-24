@@ -13,6 +13,8 @@ module.exports = {
         RegisterApp: './js/RegisterApp.js',
         SystemAdminManageVenderApp: './js/SystemAdminManageVenderApp.js',
         SystemAdminManageServiceApp: './js/SystemAdminManageServiceApp.js',
+        SystemAdminLoginApp: './js/SystemAdminLoginApp.js',
+        VenderAdminLoginApp: './js/VenderAdminLoginApp.js'
     },
     output: {
         path: __dirname + '/bundles/',

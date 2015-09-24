@@ -51,7 +51,8 @@ export default class ManageVender extends React.Component {
     }
 
     render() {
-        let search = location.search, regex = /^\?admin=(\w+)$/, admin = regex.exec(search);
+        let search = location.search, regex = /^\?admin=(\w+)&role=(\w+)$/, admin = regex.exec(search), role = regex.exec(search);
+        console.log(`admin=${admin}, role=${role}`);
         let venders = this.state.venders;
         let operation = function (cell, row) {
             return '<button class="btn btn-danger">删除</button> ';
@@ -66,8 +67,9 @@ export default class ManageVender extends React.Component {
                 </BootstrapTable>
                 <Button bsStyle="primary" className="menu-oper pull-right"
                         onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
-                <Button bsStyle="success" className="menu-oper pull-right"
-                        onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
+                {role === UserConstants.SYSADMIN_ROLE ?
+                    <Button bsStyle="success" className="menu-oper pull-right"
+                            onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button> : ''}
 
             </Grid>
 
@@ -79,7 +81,7 @@ export default class ManageVender extends React.Component {
     }
 
     _showRegisterVenderAdminModal() {
-        React.render(<RegisterVenderModal title='注册商户管理员' admin={this.admin}/>, document.getElementById('modal_section'));
+        React.render(<RegisterVenderModal title='注册商户管理员'/>, document.getElementById('modal_section'));
     }
 
     _onRegister(code) {
