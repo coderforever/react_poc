@@ -17,6 +17,7 @@ export default class ManageVender extends React.Component {
         super();
         this.state = {
             userType: UserConstants.SYSADMIN_ROLE,
+            admin: '',
             venders: [{
                 id: 1,
                 name: 'Apple',
@@ -39,7 +40,7 @@ export default class ManageVender extends React.Component {
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
                 this.setState({
-                    venders : result.venders
+                    venders: result.venders
                 })
             }
         }.bind(this));
@@ -50,9 +51,10 @@ export default class ManageVender extends React.Component {
     }
 
     render() {
+        let search = location.search, regex = /^\?admin=(\w+)$/, admin = regex.exec(search);
         let venders = this.state.venders;
         let operation = function (cell, row) {
-            return '<Button bsStyle="danger">删除</Button> ';
+            return '<button class="btn btn-danger">删除</button> ';
         }
         return (
             <Grid>
@@ -62,8 +64,10 @@ export default class ManageVender extends React.Component {
                     <TableHeaderColumn dataField="address">商家地址</TableHeaderColumn>
                     <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
-                <Button bsStyle="primary" className="menu-oper pull-right" onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
-                <Button bsStyle="success" className="menu-oper pull-right" onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
+                <Button bsStyle="primary" className="menu-oper pull-right"
+                        onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
+                <Button bsStyle="success" className="menu-oper pull-right"
+                        onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
 
             </Grid>
 
@@ -75,7 +79,7 @@ export default class ManageVender extends React.Component {
     }
 
     _showRegisterVenderAdminModal() {
-        React.render(<RegisterVenderModal title='注册商户管理员'/>, document.getElementById('modal_section'));
+        React.render(<RegisterVenderModal title='注册商户管理员' admin={this.admin}/>, document.getElementById('modal_section'));
     }
 
     _onRegister(code) {

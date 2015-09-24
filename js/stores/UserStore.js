@@ -27,10 +27,19 @@ AppDispatcher.register(function (action) {
     switch (action.actionType) {
         case UserConstants.LOGIN:
             role = data.role;
-            url = '/login/' + role;
-            $.post(url, data, function (result) {
-                UserStore.emitChange(result.code, result.token);
-            });
+            // just for test
+            if (role == UserConstants.SYSADMIN_ROLE) {
+                url = '/login/admin';
+                //$.post(url, data, function (result) {
+                //    UserStore.emitChange(result.code, result.token);
+                //});
+                UserStore.emitChange('SUCCESS', '123', 'admin');
+            } else {
+                url = '/login/' + role;
+                $.post(url, data, function (result) {
+                    UserStore.emitChange(result.code, result.token);
+                });
+            }
             break;
 
         case UserConstants.REGISTER:

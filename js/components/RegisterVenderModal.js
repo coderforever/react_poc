@@ -12,9 +12,9 @@ export default class RegisterVenderModal extends React.Component {
         this._handleSubmit = this._handleSubmit.bind(this);
         this.state = {
             showModal: false,
-            name:'',
-            password:'',
-            venderId:''
+            name: '',
+            password: '',
+            venderId: ''
         }
     }
 
@@ -68,6 +68,7 @@ export default class RegisterVenderModal extends React.Component {
             name: name,
             password: password,
             venderID: '',
+            role: 9,
             userType: UserConstants.VENDER_ROLE
         });
 

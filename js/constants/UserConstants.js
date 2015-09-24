@@ -9,9 +9,11 @@ let UserConstants={
     REGISTER: 'register',
     CUSTOMER_LOGIN_URL: 'customerLogin.html',
     VENDER_LOGIN_URL: 'venderLogin.html',
+    SYSADMIN_LOGIN_URL: 'sysadminLogin.html',
     LOGIN_SUCCESS_URL:{
         user: 'customerEntrance.html',
-        vender: 'venderOrderList.html'
+        vender: 'venderOrderList.html',
+        sysadmin:'manageVender.html'
     }
 };
 
