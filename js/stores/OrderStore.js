@@ -19,14 +19,15 @@ function _redirectToLogin(role){
 
 let OrderStore = assign({}, EventEmitter.prototype, {
     listOrders(role, page, size){
-        let orders=[];
+        let orders=[], limit=size, offset=(page-1)*limit, count=1;
         $.ajax({
             type: 'get',
-            url: '/'+role+'/orders?token='+localStorage['token'],
+            url: '/'+role+'/orders?token='+localStorage['token']+'&limit='+limit+'&offset='+offset,
             async: false,
             success: function(data){
                 if(data.code==Codes.SUCCESS){
                     orders=data.orders;
+                    count=Math.ceil(data.total/limit);
                 }
                 else if(data.code.indexOf("_TOKEN_")!=-1){
                     _redirectToLogin(role);
@@ -36,7 +37,7 @@ let OrderStore = assign({}, EventEmitter.prototype, {
 
         return {
             page: page,
-            count: 1,
+            count: count,
             data: orders
        };
     },

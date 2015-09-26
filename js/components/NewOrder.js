@@ -37,7 +37,8 @@ export default class NewOrder extends React.Component {
         let serviceMenuItems = [];
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
-                for (let vender of result.venders) {
+                for (let i=0; i<result.venders.length; i++) {
+                    let vender=result.venders[i];
                     venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
                 }
                 this.setState({
@@ -48,7 +49,8 @@ export default class NewOrder extends React.Component {
 
         $.get('/services', function (result) {
             if (result.code == Codes.SUCCESS) {
-                for (let service of result.services) {
+                for (let i=0; i<result.services.length; i++) {
+                    let service=result.services[i];
                     serviceMenuItems.push(<MenuItem eventKey={service.name+'#'+service.id}>{service.name}</MenuItem>);
                 }
                 this.setState({
