@@ -87,7 +87,7 @@ export default class AdminLogin extends React.Component {
     _onLogin(response, token, admin) {
         if (response == Codes.SUCCESS) {
             localStorage['token'] = token;
-            window.location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role]+'?admin='+admin;
+            window.location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role] + '?admin=' + admin;
         }
         else {
             this.setState({

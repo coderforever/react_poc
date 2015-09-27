@@ -14,8 +14,8 @@ let UserConstants={
     LOGIN_SUCCESS_URL:{
         user: 'customerEntrance.html',
         vender: 'venderOrderList.html',
-        admin:'manageVender.html',
-        sysadmin:'manageVender.html'
+        admin:'venderAdminManageVender.html',
+        sysadmin:'sysManageVender.html'
     }
 };
 

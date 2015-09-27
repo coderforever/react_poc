@@ -66,6 +66,16 @@ module.exports = {
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
             './js/SystemAdminManageServiceApp.js'
+        ],
+        VenderAdminManageVenderApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/VenderAdminManageVenderApp.js'
+        ],
+        VenderAdminManageServiceApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/VenderAdminManageServiceApp.js'
         ]
 	},
 	output: {

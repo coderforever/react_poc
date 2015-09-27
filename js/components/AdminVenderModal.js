@@ -12,8 +12,8 @@ export default class AdminVenderModal extends React.Component {
         this._handleSubmit = this._handleSubmit.bind(this);
         this.state = {
             showModal: false,
-            name:'',
-            password:'',
+            name: '',
+            password: '',
             venderName: '',
             venderAddress: '',
             venderService: ''
@@ -84,7 +84,7 @@ export default class AdminVenderModal extends React.Component {
             name: name,
             password: password,
             address: venderAddress,
-            admin:''
+            admin: this.props.admin
         });
 
         return;

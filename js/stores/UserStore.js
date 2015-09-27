@@ -28,7 +28,7 @@ AppDispatcher.register(function (action) {
         case UserConstants.LOGIN:
             role = data.role;
             // just for test
-            if (role == UserConstants.SYSADMIN_ROLE) {
+            if (role == UserConstants.SYSADMIN_ROLE || role==UserConstants.ADMIN_ROLE) {
                 url = '/login/admin';
                 //$.post(url, data, function (result) {
                 //    UserStore.emitChange(result.code, result.token);

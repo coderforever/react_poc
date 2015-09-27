@@ -10,12 +10,12 @@ import { Col, Grid, Row, Glyphicon, Button } from 'react-bootstrap';
 import $ from 'jquery';
 import AdminServiceModal from './AdminServiceModal';
 
-export default class ManageService extends React.Component {
+export default class VaManageService extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            userType: UserConstants.SYSADMIN_ROLE,
+            userType: UserConstants.ADMIN_ROLE,
             services: []
         };
     }
@@ -67,7 +67,7 @@ export default class ManageService extends React.Component {
         console.log(`code : ${code}`);
         if (code == Codes.SUCCESS) {
             alert('成功');
-            window.location.href = 'manageService.html';
+            window.location.href = '/venderAdminManageService.html';
         } else {
             alert('失败');
         }

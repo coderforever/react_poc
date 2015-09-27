@@ -11,7 +11,7 @@ import $ from 'jquery';
 import AdminVenderModal from './AdminVenderModal';
 import RegisterVenderModal from './RegisterVenderModal';
 
-export default class ManageVender extends React.Component {
+export default class SysManageVender extends React.Component {
 
     constructor() {
         super();
@@ -36,6 +36,9 @@ export default class ManageVender extends React.Component {
 
     componentDidMount() {
         UserStore.addChangeListener(this._onRegister.bind(this));
+        let admin = this.getUrlParam('admin');
+        this.setState({admin:admin});
+        console.log(`admin=${admin}`);
 
         $.get('/venders', function (result) {
             if (result.code == Codes.SUCCESS) {
@@ -51,8 +54,6 @@ export default class ManageVender extends React.Component {
     }
 
     render() {
-        let search = location.search, regex = /^\?admin=(\w+)&role=(\w+)$/, admin = regex.exec(search), role = regex.exec(search);
-        console.log(`admin=${admin}, role=${role}`);
         let venders = this.state.venders;
         let operation = function (cell, row) {
             return '<button class="btn btn-danger">删除</button> ';
@@ -65,11 +66,9 @@ export default class ManageVender extends React.Component {
                     <TableHeaderColumn dataField="address">商家地址</TableHeaderColumn>
                     <TableHeaderColumn dataFormat={operation}>操作</TableHeaderColumn>
                 </BootstrapTable>
-                <Button bsStyle="primary" className="menu-oper pull-right"
-                        onClick={this._showAddVenderModal.bind(this)}>添加商户</Button>
-                {role === UserConstants.SYSADMIN_ROLE ?
-                    <Button bsStyle="success" className="menu-oper pull-right"
-                            onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button> : ''}
+
+                <Button bsStyle="info" className="menu-oper pull-right"
+                        onClick={this._showRegisterVenderAdminModal.bind(this)}>注册商户管理员</Button>
 
             </Grid>
 
@@ -87,12 +86,17 @@ export default class ManageVender extends React.Component {
     _onRegister(code) {
         console.log(`code : ${code}`);
         if (code == Codes.SUCCESS) {
-            alert('成功');
-            window.location.href = 'manageVender.html';
+            alert(`注册成功`);
+            window.location.href = '/sysManageVender.html';
         } else {
-            alert('失败');
+            alert('注册失败');
         }
 
+    }
+    getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
     }
 
 }
