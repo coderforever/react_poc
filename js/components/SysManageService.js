@@ -40,7 +40,7 @@ export default class SysManageService extends React.Component {
 
         let services = this.state.services;
         let operation = function (cell, row) {
-            return '<Button bsStyle="danger">删除</Button> ';
+            return '<button class="btn btn-danger">删除</button> ';
         }
         return (
 
