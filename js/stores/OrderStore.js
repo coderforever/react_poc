@@ -60,6 +60,24 @@ let OrderStore = assign({}, EventEmitter.prototype, {
         return order;
     },
 
+    getOrderHistory(id, role){
+        let histories=[];
+        $.ajax({
+            type: 'get',
+            url: '/vender/order/history?token='+localStorage['token']+'&orderID='+id,
+            async: false,
+            success: function(data){
+                if(data.code==Codes.SUCCESS){
+                    histories=data.history;
+                }
+                else if(data.code.indexOf("_TOKEN_")!=-1){
+                    _redirectToLogin(role);
+                }
+            }
+        });
+        return histories;
+    },
+
     emitChange(...events) {
         this.emit(CHANGE_EVENT,...events);
     },

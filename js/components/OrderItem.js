@@ -3,7 +3,7 @@ import UserConstants from '../constants/UserConstants';
 
 export default class OrderList extends React.Component {
     render() {
-        let id=this.props.id, name=this.props.name, createTime=this.props.createTime, vender=this.props.vender, user=this.props.user, status=this.props.status, detailLink=(this.props.role==UserConstants.CUSTOMER_ROLE ? 'customerOrderDetail.html' : 'venderOrderDetail.html');
+        let id=this.props.id, name=this.props.name, createTime=this.props.createTime, updateTime=this.props.updateTime, vender=this.props.vender, user=this.props.user, status=this.props.status, detailLink=(this.props.role==UserConstants.CUSTOMER_ROLE ? 'customerOrderDetail.html' : 'venderOrderDetail.html');
         return (
             <div className='orderItem' onClick={()=>this._linkToDetail(detailLink+'?id='+id)}>
                 <div className='orderItem_name'>{name}</div>
@@ -12,6 +12,10 @@ export default class OrderList extends React.Component {
                         <tr>
                             <th>创建时间：</th>
                             <td>{createTime}</td>
+                        </tr>
+                        <tr>
+                            <th>更新时间：</th>
+                            <td>{updateTime==null ? '暂无更新':updateTime}</td>
                         </tr>
                         <tr>
                             <th>状态：</th>
