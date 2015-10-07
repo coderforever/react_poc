@@ -64,7 +64,7 @@ let OrderStore = assign({}, EventEmitter.prototype, {
         let histories=[];
         $.ajax({
             type: 'get',
-            url: '/vender/order/history?token='+localStorage['token']+'&orderID='+id,
+            url: '/'+role+'/order/history?token='+localStorage['token']+'&orderID='+id,
             async: false,
             success: function(data){
                 if(data.code==Codes.SUCCESS){
