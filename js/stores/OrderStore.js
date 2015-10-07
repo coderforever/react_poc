@@ -22,7 +22,7 @@ let OrderStore = assign({}, EventEmitter.prototype, {
         let orders=[], limit=size, offset=(page-1)*limit, count=1;
         $.ajax({
             type: 'get',
-            url: '/'+role+'/orders?token='+localStorage['token']+'&limit='+limit+'&offset='+offset,
+            url: '/'+role+'/orders?token='+localStorage['token']+'&limit='+limit+'&offset='+offset+'&ordering=DESC',
             async: false,
             success: function(data){
                 if(data.code==Codes.SUCCESS){

@@ -28,7 +28,7 @@ export default class OrderDetail extends React.Component {
             let historyText='';
             for(let j=0;j<histories.length;j++){
                 let history=histories[j];
-                historyText+='操作名称：'+history.actionName+'\n订单状态：'+history.processName+'\n更新时间：'+history.create_time+'\n\n';
+                historyText+='订单状态：'+history.processName+'\n更新时间：'+history.create_time+'\n\n';
             }
             if(historyText==''){
                 historyText='暂无操作历史';
