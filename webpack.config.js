@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-	entry: {
+    entry: {
         CustomerOrderListApp: [
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
@@ -76,19 +76,24 @@ module.exports = {
             'webpack-dev-server/client?http://127.0.0.1:3000',
             'webpack/hot/only-dev-server',
             './js/VenderAdminManageServiceApp.js'
+        ],
+        CustomerProfileApp: [
+            'webpack-dev-server/client?http://127.0.0.1:3000',
+            'webpack/hot/only-dev-server',
+            './js/CustomerProfileApp.js'
         ]
-	},
-	output: {
-	    publicPath: 'http://127.0.0.1:3000/bundles/',
-		path: __dirname + '/bundles/',
-		filename: '[name].js'
-	},
-	resolve: {
-		extensions: ['', '.js', '.jsx']
-	},
-	module:{
-	    loaders: [
-	        {
+    },
+    output: {
+        publicPath: 'http://127.0.0.1:3000/bundles/',
+        path: __dirname + '/bundles/',
+        filename: '[name].js'
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    module: {
+        loaders: [
+            {
                 test: /\.js$/,
                 loader: 'react-hot!babel-loader',
                 exclude: /node_modules/
@@ -99,8 +104,8 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
-	},
-	plugins: [
+    },
+    plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ]

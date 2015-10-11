@@ -16,7 +16,8 @@ module.exports = {
         SystemAdminLoginApp: './js/SystemAdminLoginApp.js',
         VenderAdminLoginApp: './js/VenderAdminLoginApp.js',
         VenderAdminManageVenderApp: './js/VenderAdminManageVenderApp.js',
-        VenderAdminManageServiceApp: './js/VenderAdminManageServiceApp.js'
+        VenderAdminManageServiceApp: './js/VenderAdminManageServiceApp.js',
+        CustomerProfileApp: './js/CustomerProfileApp.js'
     },
     output: {
         path: __dirname + '/bundles/',

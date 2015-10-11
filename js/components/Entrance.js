@@ -8,7 +8,7 @@ export default class Entrance extends React.Component {
             <Grid>
                 <Row className="show-grid">
                     <Col xs={8}>
-                        <a herf='#'>
+                        <a href='/customerProfile.html'>
                             <div className='my-profile'><span className='module-name'>我的信息</span></div>
                         </a>
                     </Col>
@@ -22,17 +22,17 @@ export default class Entrance extends React.Component {
                 <Row className="show-grid">
                     <Col xs={4}>
                         <a href='/newOrder.html'>
-                            <div className='service'><span className='module-name'>汽车服务</span></div>
+                            <div className='service'><span className='module-name'>汽车</span></div>
                         </a>
                     </Col>
                     <Col xs={4}>
                         <a href='/newOrder.html'>
-                            <div className='service'><span className='module-name'>手机服务</span></div>
+                            <div className='service'><span className='module-name'>手机</span></div>
                         </a>
                     </Col>
                     <Col xs={4}>
                         <a href='/newOrder.html'>
-                            <div className='service'><span className='module-name'>其他服务</span></div>
+                            <div className='service'><span className='module-name'>家居</span></div>
                         </a>
                     </Col>
                 </Row>

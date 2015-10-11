@@ -8,31 +8,32 @@ import $ from 'jquery';
 
 export default class CustomerLogin extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
-        this.state={
+        this.state = {
             userType: UserConstants.CUSTOMER_ROLE,
-            phone:'',
-            phone_validate:true,
-            password:'',
-            password_validate:true,
-            address:'',
-            address_validate:true,
-            venderID:'',
-            venderName:'',
-            vender_validate:true,
+            registerName: '',
+            registerName_validate: true,
+            password: '',
+            password_validate: true,
+            address: '',
+            address_validate: true,
+            venderID: '',
+            venderName: '',
+            vender_validate: true,
             register_success: true,
-            venderMenuItems:[]
+            venderMenuItems: []
         };
     }
 
     componentDidMount() {
         UserStore.addChangeListener(this._onRegister.bind(this));
-        $.get('/venders', function(result){
-            if(result.code==Codes.SUCCESS){
-                for(let i=0; i<result.venders.length; i++){
-                    let vender=result.venders[i];
-                    this.state.venderMenuItems.push(<MenuItem eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
+        $.get('/venders', function (result) {
+            if (result.code == Codes.SUCCESS) {
+                for (let i = 0; i < result.venders.length; i++) {
+                    let vender = result.venders[i];
+                    this.state.venderMenuItems.push(<MenuItem
+                        eventKey={vender.name+'#'+vender.id}>{vender.name}</MenuItem>);
                 }
             }
         }.bind(this));
@@ -43,109 +44,125 @@ export default class CustomerLogin extends React.Component {
     }
 
     render() {
-        let title = (<h3>用户注册</h3>), phoneIcon = <Glyphicon glyph='phone'/>, passwordIcon = <Glyphicon glyph='lock'/>, locationIcon=<Glyphicon glyph='home'/>;
-        let otherFields=<Input type='text' addonBefore={locationIcon} placeholder={'请输入联系地址（不超过'+UserConstants.ADDRESS_LENGTH_LIMIT+'字）'} className={this.state.address_validate ? '' : 'error'} value={this.state.address} onChange={this._addressInputChange.bind(this)}/>;
-        if(this.state.userType==UserConstants.VENDER_ROLE){
-            if(this.state.venderMenuItems.length>0){
-                otherFields=(
-                    <DropdownButton bsStyle={this.state.vender_validate ? 'default':'danger'} title={this.state.venderID=='' ? '请选择商铺':this.state.venderName} onSelect={this._venderChange.bind(this)}>
+        let title = (<h3>用户注册</h3>), phoneIcon = <Glyphicon glyph='phone'/>, passwordIcon = <Glyphicon
+            glyph='lock'/>, locationIcon = <Glyphicon glyph='home'/>;
+        let otherFields = <Input type='text' addonBefore={locationIcon}
+                                 placeholder={'请输入联系地址（不超过'+UserConstants.ADDRESS_LENGTH_LIMIT+'字）'}
+                                 className={this.state.address_validate ? '' : 'error'} value={this.state.address}
+                                 onChange={this._addressInputChange.bind(this)}/>;
+        if (this.state.userType == UserConstants.VENDER_ROLE) {
+            if (this.state.venderMenuItems.length > 0) {
+                otherFields = (
+                    <DropdownButton bsStyle={this.state.vender_validate ? 'default':'danger'}
+                                    title={this.state.venderID=='' ? '请选择商铺':this.state.venderName}
+                                    onSelect={this._venderChange.bind(this)}>
                         {this.state.venderMenuItems}
                     </DropdownButton>
                 );
             }
-            else{
-                otherFields='';
+            else {
+                otherFields = '';
             }
         }
         return (
             <form onSubmit={this._registerUser.bind(this)}>
                 <Panel header={title} bsStyle='info'>
-                    <Input type='text' addonBefore={phoneIcon} placeholder='请输入手机号码' value={this.state.phone} className={this.state.phone_validate ? '' : 'error'} onChange={this._phoneInputChange.bind(this)}/>
-                    <Input type='password' id='password1' addonBefore={passwordIcon} placeholder='请输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
-                    <Input type='password' id='password2' addonBefore={passwordIcon} placeholder='请再次输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
+                    <Input type='text' addonBefore={phoneIcon} placeholder='请输入手机号/邮箱' value={this.state.registerName}
+                           className={this.state.registerName_validate ? '' : 'error'}
+                           onChange={this._phoneInputChange.bind(this)}/>
+                    <Input type='password' id='password1' addonBefore={passwordIcon} placeholder='请输入密码'
+                           className={this.state.password_validate ? '' : 'error'}
+                           onChange={this._pwdInputChange.bind(this)}/>
+                    <Input type='password' id='password2' addonBefore={passwordIcon} placeholder='请再次输入密码'
+                           className={this.state.password_validate ? '' : 'error'}
+                           onChange={this._pwdInputChange.bind(this)}/>
                     {otherFields}
-                    { this.state.register_success==false ? (<div className="alert alert-error"><a className="close" data-dismiss="alert">×</a><strong>注册失败！</strong>请重试。</div>) : '' }
-                    <Button type='submit' bsStyle='success' className='register' block><Glyphicon glyph='user'/>注册</Button>
+                    { this.state.register_success == false ? (<div className="alert alert-error"><a className="close"
+                                                                                                    data-dismiss="alert">×</a><strong>注册失败！</strong>请重试。
+                    </div>) : '' }
+                    <Button type='submit' bsStyle='success' className='register' block><Glyphicon
+                        glyph='user'/>注册</Button>
                 </Panel>
             </form>
         );
     }
 
-    _userTypeChange(event){
+    _userTypeChange(event) {
         this.setState({
             userType: event.target.value
         });
     }
 
-    _phoneInputChange(event){
+    _phoneInputChange(event) {
         this.setState({
-            phone: event.target.value,
-            phone_validate: true
+            registerName: event.target.value,
+            registerName_validate: true
         });
     }
 
-    _pwdInputChange(event){
+    _pwdInputChange(event) {
         this.setState({
             password: event.target.value,
             password_validate: true
         });
     }
 
-    _addressInputChange(event){
+    _addressInputChange(event) {
         this.setState({
             address: event.target.value,
             address_validate: true
         });
     }
 
-    _venderChange(event, key){
-        let arr=key.split('#');
+    _venderChange(event, key) {
+        let arr = key.split('#');
         this.setState({
-            venderID:arr[1],
-            venderName:arr[0],
-            vender_validate:true
+            venderID: arr[1],
+            venderName: arr[0],
+            vender_validate: true
         });
     }
 
-    _registerUser(event){
+    _registerUser(event) {
         // prevent form submit by default
         event.preventDefault();
 
         //validate fields
-        let phoneValue=this.state.phone;
-        if(!!phoneValue.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)==false){
+        let registerName = this.state.registerName;
+        if (!!registerName.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/) == false &&
+            !!registerName.match(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/) == false) {
             this.setState({
-                phone_validate: false
+                registerName_validate: false
             });
             return;
         }
-        let password1=document.getElementById('password1').value, password2=document.getElementById('password2').value;
-        if(password1=='' || password1!=password2){
+        let password1 = document.getElementById('password1').value, password2 = document.getElementById('password2').value;
+        if (password1 == '' || password1 != password2) {
             this.setState({
                 password_validate: false
             });
             return;
         }
-        let addressValue=this.state.address, userType=this.state.userType, venderID=this.state.venderID;
-        if(userType==UserConstants.CUSTOMER_ROLE){
-            if(addressValue=='' || addressValue.length>UserConstants.ADDRESS_LENGTH_LIMIT){
+        let addressValue = this.state.address, userType = this.state.userType, venderID = this.state.venderID;
+        if (userType == UserConstants.CUSTOMER_ROLE) {
+            if (addressValue == '' || addressValue.length > UserConstants.ADDRESS_LENGTH_LIMIT) {
                 this.setState({
                     address_validate: false
                 });
                 return;
             }
         }
-        else if(userType==UserConstants.VENDER_ROLE){
-            if(venderID==''){
+        else if (userType == UserConstants.VENDER_ROLE) {
+            if (venderID == '') {
                 this.setState({
-                   vender_validate: false
+                    vender_validate: false
                 });
                 return;
             }
         }
 
         UserActions.register({
-            name: phoneValue,
+            name: registerName,
             password: password1,
             address: addressValue,
             venderID: venderID,
@@ -153,19 +170,19 @@ export default class CustomerLogin extends React.Component {
         });
     }
 
-    _onRegister(response){
-        if(response==Codes.SUCCESS){
-            let userType=this.state.userType;
-            if(userType==UserConstants.CUSTOMER_ROLE){
-                window.location.href='customerLogin.html';
+    _onRegister(response) {
+        if (response == Codes.SUCCESS) {
+            let userType = this.state.userType;
+            if (userType == UserConstants.CUSTOMER_ROLE) {
+                window.location.href = 'customerLogin.html';
             }
-            else if(userType==UserConstants.VENDER_ROLE){
-                window.location.href='venderLogin.html';
+            else if (userType == UserConstants.VENDER_ROLE) {
+                window.location.href = 'venderLogin.html';
             }
         }
-        else{
+        else {
             this.setState({
-                register_success:false
+                register_success: false
             });
         }
     }

@@ -7,14 +7,14 @@ import UserStore from '../stores/UserStore';
 
 export default class Login extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
-        this.state={
-            phone: '',
+        this.state = {
+            loginName: '',
+            loginName_validate: true,
             password: '',
-            phone_validate:true,
-            password_validate:true,
-            login_success:true
+            password_validate: true,
+            login_success: true
         };
     }
 
@@ -32,65 +32,74 @@ export default class Login extends React.Component {
         const passwordIcon = <Glyphicon glyph='lock'/>;
         return (
             <Panel header={title} bsStyle='info'>
-                <Input type='text' addonBefore={phoneIcon} value={this.state.phone} placeholder='请输入手机号码' className={this.state.phone_validate ? '' : 'error'} onChange={this._phoneInputChange.bind(this)}/>
-                <Input type='password' addonBefore={passwordIcon} value={this.state.password} placeholder='请输入密码' className={this.state.password_validate ? '' : 'error'} onChange={this._pwdInputChange.bind(this)}/>
+                <Input type='text' addonBefore={phoneIcon} value={this.state.loginName} placeholder='请输入手机号/邮箱'
+                       className={this.state.loginName_validate ? '' : 'error'}
+                       onChange={this._phoneInputChange.bind(this)}/>
+                <Input type='password' addonBefore={passwordIcon} value={this.state.password} placeholder='请输入密码'
+                       className={this.state.password_validate ? '' : 'error'}
+                       onChange={this._pwdInputChange.bind(this)}/>
+
                 <div>
                     <span>没有账号，请<a href='register.html'>注册</a></span>
                     <Button bsStyle='info' bsSize='xsmall' className='pull-right find-password'>
                         <Glyphicon glyph='question-sign'/>找回密码
                     </Button>
                 </div>
-                { this.state.login_success==false ? (<div className="alert alert-error"><a className="close" data-dismiss="alert">×</a><strong>登录失败！</strong>用户名或者密码错误</div>) : '' }
-                <Button bsStyle='success' className='login' block onClick={this._executeLogin.bind(this)}><Glyphicon glyph='log-in'/>登录</Button>
+                { this.state.login_success == false ? (<div className="alert alert-error"><a className="close"
+                                                                                             data-dismiss="alert">×</a><strong>登录失败！</strong>用户名或者密码错误
+                </div>) : '' }
+                <Button bsStyle='success' className='login' block onClick={this._executeLogin.bind(this)}><Glyphicon
+                    glyph='log-in'/>登录</Button>
             </Panel>
         );
     }
 
-    _phoneInputChange(event){
+    _phoneInputChange(event) {
         this.setState({
-            phone: event.target.value,
-            phone_validate: true
+            loginName: event.target.value,
+            loginName_validate: true
         });
     }
 
-    _pwdInputChange(event){
+    _pwdInputChange(event) {
         this.setState({
             password: event.target.value,
             password_validate: true
         });
     }
 
-    _executeLogin(){
-        let phoneValue=this.state.phone, passwordValue=this.state.password;
-        if(!!phoneValue.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)==false){
+    _executeLogin() {
+        let loginName = this.state.loginName, passwordValue = this.state.password;
+        if (!!loginName.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/) == false &&
+            !!loginName.match(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/) == false) {
             this.setState({
-                phone_validate: false
+                loginName_validate: false
             });
             return;
         }
-        if(passwordValue==''){
+        if (passwordValue == '') {
             this.setState({
                 password_validate: false
             });
             return;
         }
-        if(this.state.phone_validate && this.state.password_validate){
+        if (this.state.loginName_validate && this.state.password_validate) {
             UserActions.login({
                 role: this.props.role,
-                name: phoneValue,
+                name: loginName,
                 password: passwordValue
             });
         }
     }
 
-    _onLogin(response, token){
-        if(response==Codes.SUCCESS){
-            localStorage['token']=token;
-            window.location.href=UserConstants.LOGIN_SUCCESS_URL[this.props.role];
+    _onLogin(response, token) {
+        if (response == Codes.SUCCESS) {
+            localStorage['token'] = token;
+            window.location.href = UserConstants.LOGIN_SUCCESS_URL[this.props.role];
         }
-        else{
+        else {
             this.setState({
-                login_success:false
+                login_success: false
             });
         }
     }
